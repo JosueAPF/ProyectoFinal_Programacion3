@@ -1,0 +1,38 @@
+[
+    {
+        "Id": "001",
+        "IdTrx": "TRX1001",
+        "Nombre": "Supermercado La Estrella",
+        "Categoria": "Supermercado"
+    },
+    {
+        "Id": "002",
+        "IdTrx": "TRX1002",
+        "Nombre": "Restaurante El Sabor",
+        "Categoria": "Restaurantes"
+    },
+    {
+        "Id": "003",
+        "IdTrx": "TRX1003",
+        "Nombre": "Gasolinera R�pida",
+        "Categoria": "Gasolinera"
+    },
+    {
+        "Id": "004",
+        "IdTrx": "TRX1004",
+        "Nombre": "Cine Fant�stico",
+        "Categoria": "Entretenimiento"
+    },
+    {
+        "Id": "005",
+        "IdTrx": "TRX1005",
+        "Nombre": "Farmacia Salud Total",
+        "Categoria": "Farmacia"
+    },
+    {
+        "Id": "006",
+        "IdTrx": "TRX1006",
+        "Nombre": "Agencia Viajes Mundo",
+        "Categoria": "Viajes"
+    }
+]

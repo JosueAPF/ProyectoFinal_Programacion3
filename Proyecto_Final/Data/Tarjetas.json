@@ -1,0 +1,63 @@
+[
+    {
+        "Id": "T001",
+        "Numero": "1234567890123456",
+        "FechaExpiracion": "2026-08-15T00:00:00",
+        "Cvv": 123,
+        "Pin": 4567,
+        "Balance": 2500.75,
+        "LimiteCredito": 5000.00,
+        "IsBlocked": false,
+        "IdCliente": "C001",
+        "Transacciones": []
+    },
+    {
+        "Id": "T002",
+        "Numero": "9876543210987654",
+        "FechaExpiracion": "2027-12-01T00:00:00",
+        "Cvv": 456,
+        "Pin": 7890,
+        "Balance": 1000.00,
+        "LimiteCredito": 3000.00,
+        "IsBlocked": false,
+        "IdCliente": "C002",
+        "Transacciones": []
+    },
+    {
+        "Id": "T003",
+        "Numero": "4561237896543210",
+        "FechaExpiracion": "2028-06-30T00:00:00",
+        "Cvv": 789,
+        "Pin": 1234,
+        "Balance": 500.50,
+        "LimiteCredito": 2000.00,
+        "IsBlocked": false,
+        "IdCliente": "C003",
+        "Transacciones": []
+    },
+    {
+        "Id": "T004",
+        "Numero": "3217896549876543",
+        "FechaExpiracion": "2029-03-20T00:00:00",
+        "Cvv": 321,
+        "Pin": 5678,
+        "Balance": 7500.00,
+        "LimiteCredito": 10000.00,
+        "IsBlocked": false,
+        "IdCliente": "C004",
+        "Transacciones": []
+    },
+    {
+
+        "Id": "T005",
+        "Numero": "6549873216549870",
+        "FechaExpiracion": "2030-11-10T00:00:00",
+        "Cvv": 654,
+        "Pin": 4321,
+        "Balance": 300.00,
+        "LimiteCredito": 1500.00,
+        "IsBlocked": false,
+        "IdCliente": "C005",
+        "Transacciones": []
+    }
+]

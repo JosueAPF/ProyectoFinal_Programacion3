@@ -1,0 +1,145 @@
+[
+    {
+        "Id": "TX001",
+        "Numero": "1234567890123456",
+        "Tipo": "Compra",
+        "Monto": 150.75,
+        "FechaTransaccion": "2025-04-10T14:30:00",
+        "Establecimiento": {
+            "Id": "E001",
+            "IdTrx": "TX001",
+            "Nombre": "Supermercado La Bendición",
+            "Categoria": "Supermercado"
+        }
+    },
+    {
+        "Id": "TX002",
+        "Numero": "1234567890123456",
+        "Tipo": "Pago",
+        "Monto": 300.00,
+        "FechaTransaccion": "2025-05-12T17:45:00",
+        "Establecimiento": {
+            "Id": "E002",
+            "IdTrx": "TX002",
+            "Nombre": "Restaurante El Buen Sabor",
+            "Categoria": "Restaurantes"
+        }
+    },
+    {
+        "Id": "TX003",
+        "Numero": "9876543210987654",
+        "Tipo": "Retiro",
+        "Monto": 500.00,
+        "FechaTransaccion": "2025-05-02T19:20:00",
+        "Establecimiento": {
+            "Id": "E003",
+            "IdTrx": "TX003",
+            "Nombre": "Cajero Automático ATM123",
+            "Categoria": "ServiciosPublicos"
+        }
+    },
+    {
+        "Id": "TX004",
+        "Numero": "9876543210987654",
+        "Tipo": "Compra",
+        "Monto": 80.50,
+        "FechaTransaccion": "2025-06-10T14:15:00",
+        "Establecimiento": {
+            "Id": "E004",
+            "IdTrx": "TX004",
+            "Nombre": "Tienda Online ShopNow",
+            "Categoria": "ComprasEnLinea"
+        }
+    },
+    {
+        "Id": "TX005",
+        "Numero": "9876543210987654",
+        "Tipo": "Pago",
+        "Monto": 120.00,
+        "FechaTransaccion": "2025-07-22T11:35:00",
+        "Establecimiento": {
+            "Id": "E005",
+            "IdTrx": "TX005",
+            "Nombre": "Gasolinera FuelUp",
+            "Categoria": "Gasolinera"
+        }
+    },
+    {
+        "Id": "TX006",
+        "Numero": "4561237896543210",
+        "Tipo": "Pago",
+        "Monto": 250.50,
+        "FechaTransaccion": "2025-06-15T10:45:00",
+        "Establecimiento": {
+            "Id": "E006",
+            "IdTrx": "TX006",
+            "Nombre": "Farmacia Vida Salud",
+            "Categoria": "Farmacia"
+        }
+    },
+    {
+        "Id": "TX007",
+        "Numero": "4561237896543210",
+        "Tipo": "Transferencia",
+        "Monto": 500.00,
+        "FechaTransaccion": "2025-07-01T18:05:00",
+        "Establecimiento": {
+            "Id": "E007",
+            "IdTrx": "TX007",
+            "Nombre": "Banco Central S.A.",
+            "Categoria": "ServiciosPublicos"
+        }
+    },
+    {
+        "Id": "TX008",
+        "Numero": "3217896549876543",
+        "Tipo": "Compra",
+        "Monto": 275.00,
+        "FechaTransaccion": "2025-03-22T09:45:00",
+        "Establecimiento": {
+            "Id": "E008",
+            "IdTrx": "TX008",
+            "Nombre": "CineMax",
+            "Categoria": "Entretenimiento"
+        }
+    },
+    {
+        "Id": "TX009",
+        "Numero": "3217896549876543",
+        "Tipo": "Pago",
+        "Monto": 600.00,
+        "FechaTransaccion": "2025-04-18T15:30:00",
+        "Establecimiento": {
+            "Id": "E009",
+            "IdTrx": "TX009",
+            "Nombre": "Restaurante Delicias",
+            "Categoria": "Restaurantes"
+        }
+    },
+    {
+        "Id": "TX010",
+        "Numero": "6549873216549870",
+        "Tipo": "Compra",
+        "Monto": 75.25,
+        "FechaTransaccion": "2025-08-20T12:30:00",
+        "Establecimiento": {
+            "Id": "E010",
+            "IdTrx": "TX010",
+            "Nombre": "Tienda Supermercados Unidas",
+            "Categoria": "Supermercado"
+        }
+    },
+    {
+        "Id": "TX011",
+        "Numero": "6549873216549870",
+        "Tipo": "Pago",
+        "Monto": 100.00,
+        "FechaTransaccion": "2025-09-05T11:00:00",
+        "Establecimiento": {
+            "Id": "E011",
+            "IdTrx": "TX011",
+            "Nombre": "Electrónica TechWorld",
+            "Categoria": "ComprasEnLinea"
+        }
+    }
+]

@@ -1,0 +1,61 @@
+Creacion de la estructuras Carpetas (basico)
+	//Models
+	//Servicio---(Estructuras interactuando con los datos)
+	//Estructuras
+	//Data------(los Json)
+	//DTOs------(no creo que lo nesecite)
+	//Controllers---(mis apis Clientes,Tarjetas,Transacciones)
+	//Utils-----(el deserealizador HDP generico + Creador de Rutas)
+	//ArmadoEstructuras----(Estructuras de Datos y llenado dinamico)
+	
+
+clases Models
+	//Cliente
+	//Tarjeta
+	//Transaccion
+	//TipoTransaccion(enum)
+	//Establecimiento
+	//Categoria(enum)
+
+Servicio
+	//ClientesServicio(CRUD)
+	//TarjetasServicio(CRUD)
+	//TransaccionesServicio(listar Transacciones,Buscar Transaccion)
+
+
+
+*******************************Por terminar*******************************************************
+creacion de :
+	// DTOs para cada entidad(Modelo)-- (lol si lo nesecite :) )
+
+funcionalidades:
+	//Clientes
+		agregar solo cliente
+		agregar solo cliente-tarjeta
+		ver todo
+		ver solo cliente
+		modificar solo cliente-Nombre
+		buscar solo cliente
+		eliminar todo rastro de cliente(tarjetas(transacciones))
+
+	//Tarjetas
+		agregar solo tarjeta
+		agregar solo tarjeta-Transaccion
+		ver todo
+		ver solo tarjeta
+		modificar solo tarjeta
+		Buscar tarjeta por idcliente
+		buscar arjeta por Numero-Tarjeta
+
+	//Transacciones
+		Listar transaccion
+		Busqueda de una Transaccion
+
+	
+
+
+	Que Otras Clases Puedo Agregar????????
+
+
+	>>>>>>>>>>>>>>>>>> las estructuras ahora tiene un metodo IEnumerable 
+						es un Utilitario que trabaja sobre secuencias

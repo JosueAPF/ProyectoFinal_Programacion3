@@ -1,0 +1,16 @@
+﻿Los DTOs son tu contrato de frontera entre el mundo exterior (JSON, Swagger, HTTP) 
+y tu lógica de negocio interna. Por eso:
+
+En los Controllers
+
+Recibes siempre DTOs en los métodos POST/PUT/PATCH.
+
+Devuelves DTOs (o bien tus entidades mapeadas a DTOs) en los GET.
+
+Allí haces el mapeo manual (o con AutoMapper) entre DTO ⇄ Model.
+
+En los Services
+
+Nunca deberían saber nada de DTOs: reciben y devuelven modelos de dominio (Clientes, Tarjeta, Transaccion, etc.).
+
+De esta forma tu capa de negocio queda aislada de la forma en que se exponen o consumen esos datos por HTTP

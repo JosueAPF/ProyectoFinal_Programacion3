@@ -1,0 +1,27 @@
+[
+    {
+        "Id": "C001",
+        "Name": "Juan Perez",
+        "tarjetas": []
+    },
+    {
+        "Id": "C002",
+        "Name": "Maria Gomez",
+        "tarjetas": []
+    },
+    {
+        "Id": "C003",
+        "Name": "Carlos Rodroguez",
+        "tarjetas": []
+    },
+    {
+        "Id": "C004",
+        "Name": "Ana Fernendez",
+        "tarjetas": []
+    },
+    {
+        "Id": "C005",
+        "Name": "Luis Martinez",
+        "tarjetas": []
+    }
+]
