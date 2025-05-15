@@ -4,8 +4,8 @@
     {
         public string Ruta { get; set; }
 
-        /*en ASP.NET Core proporciona información sobre el entorno de hospedaje de la aplicación, 
-         * como el directorio raíz del contenido web*/
+        /*IWebHostEnvironment en ASP.NET Core proporciona información sobre el entorno de hospedaje de la aplicación, 
+         * como el directorio raíz de ese caso del contenido web*/
 
 
         public Rutas(IWebHostEnvironment ruta)

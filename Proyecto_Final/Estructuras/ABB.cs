@@ -30,6 +30,27 @@ namespace Estructuras
             return nodo;
 
         }
+        /*Busqueda solo por Id*/
+        public NodoA<T> BuscarRec(NodoA<T> nodo, T dato) {
+
+            if (nodo == null)
+            {
+                return null;    
+            }
+
+            if (dato.Id.CompareTo(nodo.Dato.Id) < 0)
+            {
+                return BuscarRec(nodo.Izq, dato);
+            }
+            else if (dato.Id.CompareTo(nodo.Dato.Id) > 0)
+            {
+                return BuscarRec(nodo.Der, dato);
+            }
+
+            return nodo;
+        }
+
+       
 
         public NodoA<T> Eliminar(NodoA<T> nodo, T dato) {
             if (nodo == null) {
@@ -81,5 +102,43 @@ namespace Estructuras
 
 
         //Metodos que consumen Metodos Recursivos
+
+        public void Insertar(T dato)
+        {
+            Raiz = InsetarRec(Raiz, dato);
+        }   
+
+        public NodoA<T> Buscar(T dato)
+        {
+            return BuscarRec(Raiz, dato);
+        }   
+
+        public void Eliminar(T dato)
+        {
+            Raiz = Eliminar(Raiz, dato);
+        }
+
+        ///ienumrable
+        public IEnumerable<T> ObtenerTodo()
+        {
+            return InOrder(Raiz);
+        }
+
+        private IEnumerable<T> InOrder(NodoA<T> nodo)
+        {
+            if (nodo == null)
+                yield break;
+
+            // subárbol izquierdo
+            foreach (var x in InOrder(nodo.Izq))
+                yield return x;
+
+            // nodo actual
+            yield return nodo.Dato;
+
+            // subárbol derecho
+            foreach (var x in InOrder(nodo.Der))
+                yield return x;
+        }
     }
 }

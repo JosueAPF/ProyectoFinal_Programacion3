@@ -5,7 +5,7 @@ using Models;
 
 namespace Proyecto_Final.Utils
 {
-    //por que no funciooooooooonnannaskfnsjkladn
+
     public class DeserealizadorGenerico<T>
     {
         public Rutas misRutas { get; set; } //almacena la ruta absoluta
