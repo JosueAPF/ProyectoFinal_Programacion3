@@ -83,11 +83,11 @@ namespace Proyecto_Final.Estructuras
             //*Rotaciones simples/
 
             //caso izquierdo izquierdo (Rotacion derecha)
-            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato) <=0) {
+            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato) <0) {
                 return RotacionDerecha(nodo);
             }
             //caso derecho derecho (Rotacion izquierda)
-            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato)>=0) {
+            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato)>0) {
                 return RotacionIzquierda(nodo);
             }
 
@@ -148,6 +148,12 @@ namespace Proyecto_Final.Estructuras
         }
 
         /*Metodos que consumen Metodos Recursivos*/
+        public void Insertar(T dato)
+        {
+            Raiz = InsercionRec(Raiz, dato);
+        }
+
+
 
 
         ///ienumerable preorden

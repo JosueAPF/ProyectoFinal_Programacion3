@@ -12,17 +12,17 @@ namespace Proyecto_Final.Servicio
         }
 
         public void NuevaTransaccion(Transaccion trx) {
-            ContextoEstructuras.pilaTransacciones.Push(trx);
+            ContextoEstructuras.abbTransacciones.Insertar(trx);
         }
 
         public IEnumerable<Transaccion> ObtenerTransaciones()
         {
-            return ContextoEstructuras.pilaTransacciones.ObtenerTodo();
+            return ContextoEstructuras.abbTransacciones.ObtenerTodo();  
         }
 
         public string BuscarTransaccion(string id) { 
         
-            return ContextoEstructuras.pilaTransacciones.Buscar(id);
+            return ContextoEstructuras.abbTransacciones.Buscar(id).ToString();  
         }
 
     }

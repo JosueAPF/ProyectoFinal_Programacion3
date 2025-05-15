@@ -51,16 +51,13 @@ namespace Proyecto_Final.Controllers
             }
             return CreatedAtAction(nameof(ObtenerC),new { id = cli.Id },cli);
         }
-        [HttpGet("{id}")]
+        [HttpGet("BuscarCliente/{id}")]
         public ActionResult<Clientes> ObtenerC(string id)
         {
             var c = clientServicio.BuscarCliente(id);
             if (c == null) return NotFound();
             return Ok(c);
         }
-
-
-
 
         [HttpGet("VerClientes")]
         public ActionResult<IEnumerable<Clientes>> ObtenerCliente()
@@ -69,14 +66,6 @@ namespace Proyecto_Final.Controllers
             return Ok(clientes);
         }
 
-      
-
-        [HttpGet("BuscarCliente/{id}")]
-        public ActionResult<string> BuscarCxId(string id)
-        {
-            var clienteBusqueda = clientServicio.BuscarCliente(id);
-            return Ok(clienteBusqueda);
-        }
 
         [HttpPut("ModificarNombre/{id}")]
         public ActionResult<Clientes> ModificarCliente(string id, [FromBody] ClienteDTO_ModificarNombre nuevoCliente)

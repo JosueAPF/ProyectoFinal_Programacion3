@@ -31,18 +31,18 @@ namespace Estructuras
 
         }
         /*Busqueda solo por Id*/
-        public NodoA<T> BuscarRec(NodoA<T> nodo, T dato) {
+        public NodoA<T> BuscarRec(NodoA<T> nodo, string dato) {
 
             if (nodo == null)
             {
                 return null;    
             }
 
-            if (dato.Id.CompareTo(nodo.Dato.Id) < 0)
+            if (dato.CompareTo(nodo.Dato.Id) < 0)
             {
                 return BuscarRec(nodo.Izq, dato);
             }
-            else if (dato.Id.CompareTo(nodo.Dato.Id) > 0)
+            else if (dato.CompareTo(nodo.Dato.Id) > 0)
             {
                 return BuscarRec(nodo.Der, dato);
             }
@@ -108,7 +108,7 @@ namespace Estructuras
             Raiz = InsetarRec(Raiz, dato);
         }   
 
-        public NodoA<T> Buscar(T dato)
+        public NodoA<T> Buscar(string dato)
         {
             return BuscarRec(Raiz, dato);
         }   
@@ -116,6 +116,18 @@ namespace Estructuras
         public void Eliminar(T dato)
         {
             Raiz = Eliminar(Raiz, dato);
+        }
+
+        public T ModificarNodo(string id, T datonuevo) {
+            NodoA<T> NodoViejo = Buscar(id);
+            if (NodoViejo == null)
+            {
+                return default(T);
+                
+            }
+            Eliminar(NodoViejo.Dato);
+            Insertar(datonuevo);
+            return datonuevo;
         }
 
         ///ienumrable
@@ -133,7 +145,7 @@ namespace Estructuras
             foreach (var x in InOrder(nodo.Izq))
                 yield return x;
 
-            // nodo actual
+            // nodo Raiz
             yield return nodo.Dato;
 
             // subárbol derecho

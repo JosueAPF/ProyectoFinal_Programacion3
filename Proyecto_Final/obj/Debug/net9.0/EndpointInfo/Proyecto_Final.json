@@ -68,7 +68,7 @@
         }
       }
     },
-    "/api/Clientes/{id}": {
+    "/api/Clientes/BuscarCliente/{id}": {
       "get": {
         "tags": [
           "Clientes"
@@ -138,45 +138,6 @@
                   "items": {
                     "$ref": "#/components/schemas/Clientes"
                   }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Clientes/BuscarCliente/{id}": {
-      "get": {
-        "tags": [
-          "Clientes"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
                 }
               }
             }
@@ -863,7 +824,7 @@
         }
       }
     },
-    "/api/Transaccion/obtenerTransaccion/{id}": {
+    "/api/Transaccion/buscarTransaccion/{id}": {
       "get": {
         "tags": [
           "Transaccion"
@@ -884,17 +845,26 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaccion"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaccion"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaccion"
+                  }
                 }
               }
             }

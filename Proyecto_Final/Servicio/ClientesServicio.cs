@@ -9,6 +9,7 @@ namespace Proyecto_Final.Servicio
     {
 
         public ContextDatos ContextoEstructura { get; set; }
+
         public ClientesServicio(ContextDatos contexto)
         {
             ContextoEstructura = contexto;  
@@ -16,38 +17,39 @@ namespace Proyecto_Final.Servicio
 
         public void AgregarClientes(Clientes cliente)
         {
-            ContextoEstructura.colaClientes.Encolar(cliente);
+            //ContextoEstructura.colaClientes.Encolar(cliente);
+            ContextoEstructura.abblClientes.Insertar(cliente);
         }
         public IEnumerable<Clientes> ObtenerClientes() {
-            return ContextoEstructura.colaClientes.ObtenerTodo();
+            return ContextoEstructura.abblClientes.ObtenerTodo();
+
         }
 
         public string BuscarCliente(string id)
         {
-            return ContextoEstructura.colaClientes.Buscar(id);
+            var buscarcliente = ContextoEstructura.abblClientes.Buscar(id);
+            return buscarcliente.ToString();
         }
         /* Modifica : Version sin DTO*/
         public string ModificarCliente(string id, Clientes nuevoCliente) {
-            var clienteModificado = ContextoEstructura.colaClientes.Modificar(id, nuevoCliente);
-            return clienteModificado; 
+            var clienteModificado = ContextoEstructura.abblClientes.ModificarNodo(id, nuevoCliente);
+            return clienteModificado.ToString(); 
         }
 
 
         public Clientes ModificarNombre(string id, ClienteDTO_ModificarNombre cliNombre) {
-            var todosClientes = ContextoEstructura.colaClientes.ObtenerTodo();
-
-            foreach (var item in todosClientes)
-            {
-                if (item.Id == id) { 
-                    item.Name = cliNombre.Name;
-                    return item;
-                }
+            var viejo = ContextoEstructura.abblClientes.Buscar(id);
+            if (viejo == null) {
+                return null;
             }
-            return null;
+
+            var nueva = new Clientes(id,cliNombre.Name);
+            var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id,nueva);
+            return nueva;
 
         }
         public void agregarTarjeta(Tarjeta tarjeta) {
-           foreach(var item in ContextoEstructura.colaClientes.ObtenerTodo())
+           foreach(var item in ContextoEstructura.abblClientes.ObtenerTodo())
             {
                 if (item.Id == tarjeta.IdCliente)
                 {

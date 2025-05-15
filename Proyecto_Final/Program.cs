@@ -12,20 +12,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-// ⬇️  registras el servicio y Otras clases relevanes mientras en el contructor pidan datos
-//builder.Services.AddSingleton<PilaServicio>();
+// ⬇️ Instancias unicas de mis servicios y clases Especiales
+
+//Utiles:  Ruta-Deserealizador- primera prueba de servicio
 builder.Services.AddSingleton<Rutas>();
 builder.Services.AddTransient(typeof(DeserealizadorGenerico<>));
 builder.Services.AddSingleton<PruebaServicio>();
 
-/*A prueba*/
+/*A prueba servicios */
 builder.Services.AddSingleton<ContextDatos>();
 builder.Services.AddSingleton<ClientesServicio>();
+builder.Services.AddSingleton<ServicioUsuariosActivos>();
 builder.Services.AddSingleton<TarjetaServicio>();
 builder.Services.AddSingleton<TransaccionServicio>();
-
-
-
 
 
 // Configurar Swagger
@@ -38,8 +37,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API REST para gestión de Tarjetas de Credito"
     });
 });
-
-
 var app = builder.Build();
 
 // Configurar middleware
@@ -52,7 +49,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API V1");
-        c.RoutePrefix = "swagger"; // Acceder desde /swagger
+        c.RoutePrefix = "swagger"; 
     });
 }
 

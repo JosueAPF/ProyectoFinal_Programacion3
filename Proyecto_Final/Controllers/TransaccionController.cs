@@ -37,8 +37,8 @@ namespace Proyecto_Final.Controllers
             return Ok(TransServicio.ObtenerTransaciones());
         }
 
-        [HttpGet("obtenerTransaccion/{id}")]
-        public ActionResult<string> ObtenerTransaccion(string id)
+        [HttpGet("buscarTransaccion/{id}")]
+        public ActionResult<IEnumerable<Transaccion>> ObtenerTransaccion(string id)
         {
             var c = TransServicio.BuscarTransaccion(id);
             if (c == null) return NotFound();
