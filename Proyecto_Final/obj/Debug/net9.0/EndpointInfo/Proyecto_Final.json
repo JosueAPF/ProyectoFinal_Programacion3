@@ -475,14 +475,14 @@
         }
       }
     },
-    "/api/Tarjetas/ObtnerTarjetaxNumero{Numero}": {
+    "/api/Tarjetas/ObtnerTarjetaxNumero{numeroTarjeta}": {
       "get": {
         "tags": [
           "Tarjetas"
         ],
         "parameters": [
           {
-            "name": "Numero",
+            "name": "numeroTarjeta",
             "in": "path",
             "required": true,
             "schema": {
@@ -544,6 +544,223 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Tarjeta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/verBalance/{numeroTarjeta}": {
+      "get": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/cambiarPin/{numeroTarjeta}": {
+      "put": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/BloquearTarjeta": {
+      "put": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numTarjeta",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/DesbloquearTarjeta": {
+      "delete": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/aumentoLimite/{numeroTarjeta}": {
+      "put": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tarjetas/HistorialLimites/{numeroTarjeta}": {
+      "get": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CambioLimiteTarjeta"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CambioLimiteTarjeta"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CambioLimiteTarjeta"
                   }
                 }
               }
@@ -799,6 +1016,28 @@
   },
   "components": {
     "schemas": {
+      "CambioLimiteTarjeta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "limiteActual": {
+            "type": "number",
+            "format": "double"
+          },
+          "limiteAnterior": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "Categoria": {
         "enum": [
           "Supermercado",

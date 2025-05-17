@@ -64,9 +64,9 @@ namespace Proyecto_Final.Controllers
 
 
 
-
+        /*Uso del Arbol Binario de Busqueda**/
         [HttpGet("verTransacciones")]
-        public ActionResult<IEnumerable<Transaccion>> Get()
+        public ActionResult<IEnumerable<Transaccion>> VerTodas()
         {
             return Ok(TransServicio.ObtenerTransaciones());
         }

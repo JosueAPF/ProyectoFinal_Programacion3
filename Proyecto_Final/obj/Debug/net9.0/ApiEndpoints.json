@@ -235,6 +235,106 @@
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "AumentoLimite",
+    "RelativePath": "api/Tarjetas/aumentoLimite/{numeroTarjeta}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "nuevoLimite",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "BloquearTarjeta",
+    "RelativePath": "api/Tarjetas/BloquearTarjeta",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numTarjeta",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "CambiarPin",
+    "RelativePath": "api/Tarjetas/cambiarPin/{numeroTarjeta}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "nuevoPin",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "DesbloquearTarjeta",
+    "RelativePath": "api/Tarjetas/DesbloquearTarjeta",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "HistorialLimites",
+    "RelativePath": "api/Tarjetas/HistorialLimites/{numeroTarjeta}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Proyecto_Final.Models.CambioLimiteTarjeta, Proyecto_Final, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "NewTarjeta",
     "RelativePath": "api/Tarjetas/nuevaTarjeta",
     "HttpMethod": "POST",
@@ -288,13 +388,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "ObtenerTarjetaxNumero",
-    "RelativePath": "api/Tarjetas/ObtnerTarjetaxNumero{Numero}",
+    "RelativePath": "api/Tarjetas/ObtnerTarjetaxNumero{numeroTarjeta}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Numero",
+        "Name": "numeroTarjeta",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -302,6 +402,32 @@
     "ReturnTypes": [
       {
         "Type": "Models.Tarjeta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "VerBalance",
+    "RelativePath": "api/Tarjetas/verBalance/{numeroTarjeta}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -451,7 +577,7 @@
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.TransaccionController",
-    "Method": "Get",
+    "Method": "VerTodas",
     "RelativePath": "api/Transaccion/verTransacciones",
     "HttpMethod": "GET",
     "IsController": true,

@@ -48,6 +48,9 @@ namespace Proyecto_Final.Servicio
             {
                 if (tarjeta.Numero == trx.Numero)
                 {
+                    if (tarjeta.IsBlocked) {
+                        return false;
+                    }
                     tarjetaEncontrada = tarjeta;
                     break;
                 }
