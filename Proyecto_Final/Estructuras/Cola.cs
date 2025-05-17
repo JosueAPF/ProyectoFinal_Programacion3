@@ -82,8 +82,12 @@ namespace Estructuras
                 auxPrimero = auxPrimero.Sig;
             }
             return sb.ToString();
-        }   
+        }
 
+
+        public bool estaVacio() {
+            return Primero == null;
+        }
 
         public IEnumerable<T> ObtenerTodo()
         {

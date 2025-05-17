@@ -31,6 +31,40 @@ namespace Proyecto_Final.Controllers
 
         }
 
+        [HttpGet("procesarPendiente")]
+        public ActionResult ProcesarPendiente()
+        {
+            var procesado = TransServicio.ProcesarTransaccion();
+            if (!procesado) { 
+                return NotFound("No hay Pendientes por Procesar");
+            }
+            
+            return Ok("se ha Procesado El Pendiente");
+        }
+
+        [HttpGet("procesarBatch")]
+        public ActionResult ProcesarloTodo()
+        {
+            TransServicio.ProcesarTodo();
+            return Ok("se ha Procesado Todo El Batch");
+        }
+
+
+        [HttpPost("obtenerPendientes")]
+        public ActionResult<IEnumerable<Transaccion>> ObtenerPendientes()
+        {
+            return Ok(TransServicio.ObtenerPendientes_Cola());
+        }
+
+        [HttpPost("obtenerRecientes")]
+        public ActionResult<IEnumerable<Transaccion>> ObtenerRecientes(int cantidadAPVer)
+        {
+            return Ok(TransServicio.ObtenerRecientes_Pila(cantidadAPVer));
+        }
+
+
+
+
         [HttpGet("verTransacciones")]
         public ActionResult<IEnumerable<Transaccion>> Get()
         {

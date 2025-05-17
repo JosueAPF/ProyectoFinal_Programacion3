@@ -45,7 +45,7 @@ namespace Proyecto_Final.Utils
                 return new List<T>();   
             }
 
-            return ListaDeserealizadaXD;//ojala que funcione
+            return ListaDeserealizadaXD;//
 
         }
 

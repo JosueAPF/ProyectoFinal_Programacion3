@@ -82,28 +82,30 @@ namespace Proyecto_Final.Estructuras
             
             //*Rotaciones simples/
 
-            //caso izquierdo izquierdo (Rotacion derecha)
-            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato) <0) {
+            
+            // Rotación simple Izq-Izq
+            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato.Id) < 0)
                 return RotacionDerecha(nodo);
-            }
-            //caso derecho derecho (Rotacion izquierda)
-            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato)>0) {
+
+            // Rotación simple Der-Der
+            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato.Id) > 0)
                 return RotacionIzquierda(nodo);
-            }
 
-            //casos dobles
-
-            //caso Izquierdo-Derecho
-            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato) > 0) {
+            // Rotación doble Izq-Der
+            if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato.Id) > 0)
+            {
                 nodo.Izq = RotacionIzquierda(nodo.Izq);
                 return RotacionDerecha(nodo);
             }
 
-            //caso Derecho-Izquierdo
-            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato) > 0) {
+            // Rotación doble Der-Izq
+            if (Fe > 2 && dato.Id.CompareTo(nodo.Der.Dato.Id) < 0)
+            {
                 nodo.Der = RotacionDerecha(nodo.Der);
                 return RotacionIzquierda(nodo);
             }
+
+
 
             return nodo;
         }
@@ -147,11 +149,42 @@ namespace Proyecto_Final.Estructuras
         
         }
 
+        public NodoA<T> BuscarRec(NodoA<T> nodo, string dato)
+        {
+
+            if (nodo == null)
+            {
+                return null;
+            }
+
+            if (dato.CompareTo(nodo.Dato.Id) < 0)
+            {
+                return BuscarRec(nodo.Izq, dato);
+            }
+            else if (dato.CompareTo(nodo.Dato.Id) > 0)
+            {
+                return BuscarRec(nodo.Der, dato);
+            }
+
+            return nodo;
+        }
+
+
         /*Metodos que consumen Metodos Recursivos*/
         public void Insertar(T dato)
         {
             Raiz = InsercionRec(Raiz, dato);
         }
+        public void Eliminar(T dato)
+        {
+            Raiz = ElimRec(Raiz, dato);
+        }   
+        public void Buscar(string dato)
+        {
+              BuscarRec(Raiz, dato);
+        }   
+
+        
 
 
 

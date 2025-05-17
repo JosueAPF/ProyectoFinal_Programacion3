@@ -5,7 +5,6 @@ namespace Proyecto_Final.Servicio
 {
     public class ServicioUsuariosActivos
     {
-
         public ContextDatos ContextoEstructuras { get; set; }
 
         public ServicioUsuariosActivos(ContextDatos contexto)
@@ -13,24 +12,38 @@ namespace Proyecto_Final.Servicio
             ContextoEstructuras = contexto;
         }
 
-        public bool loginUsuario(string clienteId) {
-            //verifica la existencia de el cliente en el arbol ABB
+        public bool loginUsuario(string clienteId)
+        {
+            // Verifica la existencia del cliente en el árbol ABB
             var verificarCliente = ContextoEstructuras.abblClientes.Buscar(clienteId);
 
-            //el cliente no existe
-            if (verificarCliente == null) {
+            // El cliente no existe
+            if (verificarCliente == null)
+            {
                 return false;
             }
 
-            //como si existe el cliente, lo agrego al AVL 
-            ContextoEstructuras.avlClientesLogin.Insertar(verificarCliente.Dato);    
-            return true;    
-            
+            // Como sí existe el cliente, lo agrego al AVL
+            ContextoEstructuras.avlClientesLogin.Insertar(verificarCliente.Dato);
+            return true;
         }
-         // los clientes activos
+
+        // Los clientes activos
         public IEnumerable<Clientes> ObtenerUsuariosActivos()
         {
             return ContextoEstructuras.avlClientesLogin.ObtenerTodo();
-        }   
+        }
+
+        public bool deslogearUsuario(string cliId)
+        {
+            
+           var ExistenciaCliente = ContextoEstructuras.avlClientesLogin.BuscarRec(ContextoEstructuras.avlClientesLogin.Raiz,cliId);
+            if (ExistenciaCliente == null) {
+                return false;
+            }
+
+            ContextoEstructuras.avlClientesLogin.Eliminar(ExistenciaCliente.Dato);
+            return true;
+        }
     }
 }

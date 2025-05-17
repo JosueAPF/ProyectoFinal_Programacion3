@@ -13,11 +13,40 @@ namespace Proyecto_Final.Controllers
     {
         public ClientesServicio clientServicio { get; set; }
         public TarjetaServicio tarjetaServicio { get; set; }
-        public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio)
+
+        public ServicioUsuariosActivos servicioUsuariosActivos { get; set; }
+        public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio, ServicioUsuariosActivos activos)
         {
             clientServicio = servicio;
+            this.servicioUsuariosActivos = activos;
             this.tarjetaServicio = tarjetaServicio;
         }
+        [HttpGet("login/{clienteId}")]
+        public ActionResult<bool> Login(string clienteId)
+        {
+            var login = servicioUsuariosActivos.loginUsuario(clienteId);
+            if (login == false)
+            {
+                return NotFound();
+            }
+            return Ok(login);
+        }
+        [HttpGet("Clientes_Activos")]
+        public ActionResult<IEnumerable<Clientes>> ClientesLoggeados() {
+
+            return Ok(servicioUsuariosActivos.ObtenerUsuariosActivos());
+        }
+
+        [HttpGet("Logout/{idcliente}")]
+        public ActionResult<bool> Logout(string idcliente)
+        {
+            var logout = servicioUsuariosActivos.deslogearUsuario(idcliente);
+            if (logout == false)
+            {
+                return NotFound();
+            }
+            return Ok(logout);
+        }   
 
         [HttpPost("nuevoClientes")]
         public void NuevoCliente([FromBody] ClienteDTO_Escritura cliDTO)
@@ -74,5 +103,12 @@ namespace Proyecto_Final.Controllers
             if (micliente == null) return NotFound();
             return Ok(micliente);
         }
+
+        [HttpDelete("EliminarCliente/{id}")]
+        public ActionResult<bool> EliminarCliente(string id)
+        {
+            var eliminar = clientServicio.ElimnarCliente(id);
+            return Ok(eliminar);
+        }   
     }
 }

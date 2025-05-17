@@ -24,7 +24,7 @@ namespace Proyecto_Final.Controllers
             servicio.AgregarClientes(nuevoCliente);
             return Ok(nuevoCliente);
         }   
-
+        /*
 
         [HttpGet("VerClientes")]
         public ActionResult<IEnumerable<Clientes>> PruebaClientes()
@@ -39,7 +39,7 @@ namespace Proyecto_Final.Controllers
         }
 
 
-        /*******************************************************Tarjetas***/
+        //Tarjetas
         [HttpPost("NuevaTarjeta")]
         public ActionResult CrearTarjeta([FromBody] Tarjeta tarjeta)
         {
@@ -56,7 +56,7 @@ namespace Proyecto_Final.Controllers
         public ActionResult<Tarjeta> BuscarTarjetaXid(string idCliente) {
             return Ok(servicio.BuscarTarjeta(idCliente));
         }
-        //*cambio de pin*/
+        //cambio de pin/
         [HttpPut("CambioPin/{id}/{pin}")]
         public ActionResult<Tarjeta> CambiarPin(string id, int pin)
         {
@@ -64,7 +64,7 @@ namespace Proyecto_Final.Controllers
             return Ok(servicioCambio);
         }
 
-        /*ver el balance de la tarjeta*/
+        //ver el balance de la tarjeta
         [HttpGet("verBalance/{idCliente}")]
         public ActionResult<Tarjeta> VerBalance(string idCliente)
         {
@@ -72,16 +72,9 @@ namespace Proyecto_Final.Controllers
             return Ok(servicioVer);
         }
 
-        //*como prueba -seria mejor ponerlo en el constructor del servicio*//
-        /*
-        [HttpGet("Actualizar_Balance")]
-        public ActionResult<Tarjeta> ActualizarBalance()
-        {
-            var servicioActualizar = servicio.ActualizarBalane();
-            return Ok(servicioActualizar);
-        }*/
+        
 
-        /*****************************************Transacciones*/
+        //Transacciones
         [HttpGet("verTransacciones")]
         public ActionResult<IEnumerable<Transaccion>> VerTransacciones()
         {
@@ -96,6 +89,7 @@ namespace Proyecto_Final.Controllers
                 return BadRequest("Error en la Transaccio");
             }
             return Ok("Transaccion Realizada");
-        }
+        }*/
+        
     }
 }

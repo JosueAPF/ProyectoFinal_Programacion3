@@ -28,6 +28,9 @@ namespace Proyecto_Final.Servicio
         public string BuscarCliente(string id)
         {
             var buscarcliente = ContextoEstructura.abblClientes.Buscar(id);
+            if (buscarcliente == null) {
+                return null;
+            }
             return buscarcliente.ToString();
         }
         /* Modifica : Version sin DTO*/
@@ -56,6 +59,18 @@ namespace Proyecto_Final.Servicio
                     item.AgregarTarjeta(tarjeta);
                 }
             }   
+        }
+        public bool ElimnarCliente(string Id) {
+            var BuscandoClinetElim = ContextoEstructura.abblClientes.Buscar(Id);
+
+            if (BuscandoClinetElim == null) {
+                return false;
+            }
+
+            ContextoEstructura.abblClientes.Eliminar(BuscandoClinetElim.Dato);
+
+            //eliminado con exito
+            return true;
         }
 
         
