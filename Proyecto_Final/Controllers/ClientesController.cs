@@ -13,6 +13,7 @@ namespace Proyecto_Final.Controllers
     {
         public ClientesServicio clientServicio { get; set; }
         public TarjetaServicio tarjetaServicio { get; set; }
+  
 
         public ServicioUsuariosActivos servicioUsuariosActivos { get; set; }
         public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio, ServicioUsuariosActivos activos)
@@ -83,10 +84,14 @@ namespace Proyecto_Final.Controllers
         [HttpGet("BuscarCliente/{id}")]
         public ActionResult<Clientes> ObtenerC(string id)
         {
-            var c = clientServicio.BuscarCliente(id);
-            if (c == null) return NotFound();
-            return Ok(c);
+            var cli = clientServicio.BuscarCliente(id);
+            if (cli == null)
+            {
+                return NotFound("Ese Cliente No Existe !");
+            }
+            return Ok(cli);
         }
+        
 
         [HttpGet("VerClientes")]
         public ActionResult<IEnumerable<Clientes>> ObtenerCliente()
@@ -95,19 +100,33 @@ namespace Proyecto_Final.Controllers
             return Ok(clientes);
         }
 
+        /*
+        [HttpGet("ObtenerTodo")]
+        public ActionResult<IEnumerable<Clientes>>  ObtenerTodo() {
+            var cliTar = clientServicio.ObtenerCliente_Tarjeta();
+            return Ok(cliTar);
+        
+        }*/
+
 
         [HttpPut("ModificarNombre/{id}")]
         public ActionResult<Clientes> ModificarCliente(string id, [FromBody] ClienteDTO_ModificarNombre nuevoCliente)
         {
            var micliente = clientServicio.ModificarNombre(id, nuevoCliente);
-            if (micliente == null) return NotFound();
+            if (micliente == null) {
+
+                return NotFound("Posiblemente El Cliente No Exista!");
+            }
             return Ok(micliente);
         }
 
         [HttpDelete("EliminarCliente/{id}")]
-        public ActionResult<bool> EliminarCliente(string id)
+        public ActionResult<string> EliminarCliente(string id)
         {
             var eliminar = clientServicio.ElimnarCliente(id);
+            if (!eliminar) {
+                return NotFound("Posiblemente El Cliente No Exista!");
+            }
             return Ok(eliminar);
         }   
     }

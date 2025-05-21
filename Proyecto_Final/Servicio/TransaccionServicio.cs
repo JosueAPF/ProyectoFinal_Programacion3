@@ -6,7 +6,7 @@ namespace Proyecto_Final.Servicio
     public class TransaccionServicio
 
     {
-        /**No funciona  --quitar los desencolados y dejar solo el de procesarTransaccion*/
+        //hacer mas pruebas
 
         public ContextDatos ContextoEstructuras { get; set; }
         public int MAXIMO_RECIENTES;
@@ -14,14 +14,39 @@ namespace Proyecto_Final.Servicio
         public TransaccionServicio(ContextDatos datos)
         {
             ContextoEstructuras = datos;
-            MAXIMO_RECIENTES = 15;
+            MAXIMO_RECIENTES = 25;
         }
 
         public void NuevaTransaccion(Transaccion tx)
         {
-            ContextoEstructuras.abbTransacciones.Insertar(tx);
-            //Cola de Transacciones Pendientes
-            ContextoEstructuras.ColaTransacciones.Encolar(tx);
+            Tarjeta tarjeta = null;
+            //verificar que la tarjeta exista, no este bloqueada o no este a cero
+            foreach(var t in ContextoEstructuras.colaTarjetas.ObtenerTodo())
+            {
+                if (t.Numero == tx.Numero)
+                {
+                    tarjeta = t;
+                    break;
+                }
+            }
+          
+
+            if (tarjeta == null) {
+                return;
+            }
+
+            if (!tarjeta.IsBlocked || tarjeta.Balance > 0m)
+            {
+
+                // return;
+                ContextoEstructuras.abbTransacciones.Insertar(tx);
+                //Cola de Transacciones Pendientes
+                ContextoEstructuras.ColaTransacciones.Encolar(tx);
+            }
+            
+            
+
+
 
         }
         //solo es del ABB
@@ -33,6 +58,7 @@ namespace Proyecto_Final.Servicio
         //en conjunto con ContextoDatos ya tiene que estar vinculado Tarjeta-Transaccion
         public bool ProcesarTransaccion()
         {
+            //nada q procesar
             if (ContextoEstructuras.ColaTransacciones.estaVacio())
             {
                 return false;
@@ -41,16 +67,12 @@ namespace Proyecto_Final.Servicio
             //desencolar la transaccion
             Transaccion trx = ContextoEstructuras.ColaTransacciones.Desencolar();
             Tarjeta tarjetaEncontrada = null;
-
-
-            
-            foreach (var tarjeta in ContextoEstructuras.colaTarjetas.ObtenerTodo())
+     
+                foreach (var tarjeta in ContextoEstructuras.colaTarjetas.ObtenerTodo())
             {
                 if (tarjeta.Numero == trx.Numero)
                 {
-                    if (tarjeta.IsBlocked) {
-                        return false;
-                    }
+                  
                     tarjetaEncontrada = tarjeta;
                     break;
                 }
@@ -61,6 +83,13 @@ namespace Proyecto_Final.Servicio
                 return false;
             }
 
+            //si la tarjeta ya esta bloqueadaa no admite ninguna trans
+            if (tarjetaEncontrada.IsBlocked)
+            {
+                //tarjetaEncontrada.ElimTransBuscar(trx);
+                return true;
+            }
+
             //ajuste del balance correspondiente a la tarjeta
             tarjetaEncontrada.Balance -= trx.Monto;//debitamos el gasto
             if (tarjetaEncontrada.Balance <= 0m) { 
@@ -68,8 +97,27 @@ namespace Proyecto_Final.Servicio
                 tarjetaEncontrada.IsBlocked = true;
             }
 
+            //si la transaccion excede el monto de la tranjeta
+            /*
+            if (trx.Monto > tarjetaEncontrada.Balance) {
+                tarjetaEncontrada.Balance = 0m;
+                tarjetaEncontrada.IsBlocked = true;
+                return true;
+            }*/
+
             //agregamos la transaccion al histrial de las tarjetas
-            tarjetaEncontrada.AgregarTransaccion(trx);
+            bool EsaYaExiste = false;
+            foreach (var t in tarjetaEncontrada.Transacciones) {
+                if (t.Id == trx.Id) {
+                    EsaYaExiste = true;
+                    break;
+                }
+            }
+            if (!EsaYaExiste) {
+                tarjetaEncontrada.AgregarTransaccion(trx);
+            }
+
+
             //agregamos la transaccion a la pila de recientes   
             ContextoEstructuras.pilaTransacciones.Push(trx);
             while (ContextoEstructuras.pilaTransacciones.ObtenerTodo().Count() > MAXIMO_RECIENTES) {
@@ -92,6 +140,8 @@ namespace Proyecto_Final.Servicio
                 }
             }
         }
+
+        
 
         //Mostrar cola de Pendientes
         public IEnumerable<Transaccion> ObtenerPendientes_Cola()

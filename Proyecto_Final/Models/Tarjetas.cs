@@ -64,6 +64,21 @@ namespace Models
             }
         }
 
+        public void ElimTrans() {
+
+            Transacciones.Clear();
+        }
+
+        public void ElimTransBuscar(Transaccion trx) {
+            for(int i=0;i<Transacciones.Count;i++) {
+                if (Transacciones[i].Equals(trx)) {
+                    Transacciones.Remove(trx);
+                }
+            }
+        }
+
+        
+
         public override string ToString()
         {
             return $"\n\tId :{Id}"+

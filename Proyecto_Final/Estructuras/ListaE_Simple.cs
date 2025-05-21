@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Text;
 using Models;
+using Proyecto_Final.Models;
 
 namespace Estructuras
 {
@@ -40,6 +41,7 @@ namespace Estructuras
             }
             return sb.ToString();
         }
+        
         public T Eliminar(int id) {
             if (Cabeza == null) {
                 return default(T);
@@ -64,7 +66,7 @@ namespace Estructuras
             anteriror.Sig = actual.Sig;
             return actual.Dato; 
         }
-
+        
         public string Bucar(int id) {
             StringBuilder sb = new StringBuilder(); 
             if (Cabeza == null) { 
@@ -80,7 +82,7 @@ namespace Estructuras
             }
             return sb.ToString(); 
         }
-
+        
      
 
         public IEnumerator<T> GetEnumerator()

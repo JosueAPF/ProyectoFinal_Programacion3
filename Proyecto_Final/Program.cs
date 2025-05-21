@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 //Utiles:  Ruta-Deserealizador- primera prueba de servicio
 builder.Services.AddSingleton<Rutas>();
 builder.Services.AddTransient(typeof(DeserealizadorGenerico<>));
-builder.Services.AddSingleton<PruebaServicio>();
+//builder.Services.AddSingleton<PruebaServicio>();
 
 /*A prueba servicios */
 builder.Services.AddSingleton<ContextDatos>();

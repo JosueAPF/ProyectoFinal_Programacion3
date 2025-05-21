@@ -340,50 +340,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "type": "string"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "type": "string"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
+                  "type": "string"
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/mi/NuevoCliente/{id}/{nombre}": {
-      "post": {
-        "tags": [
-          "mi"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nombre",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }

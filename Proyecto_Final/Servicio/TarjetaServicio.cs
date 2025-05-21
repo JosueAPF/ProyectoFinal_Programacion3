@@ -5,6 +5,9 @@ using Proyecto_Final.Models;
 
 namespace Proyecto_Final.Servicio
 {
+
+    //hacer mas pruebas
+
     //por arreglar :
             /*
              cuando se ingresan valores inexistentes en la mayoria de los endpoints 
@@ -67,7 +70,18 @@ namespace Proyecto_Final.Servicio
             {
                 if (item.Numero == trx.Numero)
                 {
+
+                    //si esta bloqueada no agrega tranasaccion
+                    if (item.IsBlocked) {
+                        return;
+                    }
+                    //si exede el balance de la tarjeta no agrega transccion
+                    if (trx.Monto > item.Balance) {
+                        return;
+                    }
+
                     item.AgregarTransaccion(trx);
+                    return;
                 }
             }
         }

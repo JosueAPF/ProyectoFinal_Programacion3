@@ -12,67 +12,105 @@ namespace Proyecto_Final.Servicio
 
         public ClientesServicio(ContextDatos contexto)
         {
-            ContextoEstructura = contexto;  
+            ContextoEstructura = contexto;
         }
 
         public void AgregarClientes(Clientes cliente)
         {
-            //ContextoEstructura.colaClientes.Encolar(cliente);
+            ///ContextoEstructura.colaClientes.Encolar(cliente);
             ContextoEstructura.abblClientes.Insertar(cliente);
         }
-        public IEnumerable<Clientes> ObtenerClientes() {
+        public IEnumerable<Clientes> ObtenerClientes()
+        {
             return ContextoEstructura.abblClientes.ObtenerTodo();
 
         }
+        /*
+        public IEnumerable<Clientes> ObtenerCliente_Tarjeta()
+        {
+            var clientes = ContextoEstructura.abblClientes.ObtenerTodo();
+            var tar = ContextoEstructura.colaTarjetas.ObtenerTodo();
+
+            foreach (var itemC in clientes)
+            {
+                itemC.EliminarTarjeta();
+            }
+
+            foreach (var itemT in tar)
+            {
+                foreach (var itemC in clientes)
+                {
+
+                    if (itemT.IdCliente == itemC.Id)
+                    {
+                        itemC.AgregarTarjeta(itemT);
+                    }
+                }
+            }
+
+            return clientes;
+        }*/
 
         public string BuscarCliente(string id)
         {
             var buscarcliente = ContextoEstructura.abblClientes.Buscar(id);
-            if (buscarcliente == null) {
+            if (buscarcliente == null)
+            {
                 return null;
             }
             return buscarcliente.ToString();
         }
         /* Modifica : Version sin DTO*/
-        public string ModificarCliente(string id, Clientes nuevoCliente) {
+        public string ModificarCliente(string id, Clientes nuevoCliente)
+        {
             var clienteModificado = ContextoEstructura.abblClientes.ModificarNodo(id, nuevoCliente);
-            return clienteModificado.ToString(); 
+            return clienteModificado.ToString();
         }
 
 
-        public Clientes ModificarNombre(string id, ClienteDTO_ModificarNombre cliNombre) {
+        public Clientes ModificarNombre(string id, ClienteDTO_ModificarNombre cliNombre)
+        {
             var viejo = ContextoEstructura.abblClientes.Buscar(id);
-            if (viejo == null) {
+            if (viejo == null)
+            {
                 return null;
             }
 
-            var nueva = new Clientes(id,cliNombre.Name);
-            var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id,nueva);
+            var nueva = new Clientes(id, cliNombre.Name);
+            var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id, nueva);
             return nueva;
 
         }
-        public void agregarTarjeta(Tarjeta tarjeta) {
-           foreach(var item in ContextoEstructura.abblClientes.ObtenerTodo())
+        public void agregarTarjeta(Tarjeta tarjeta)
+        {
+            foreach (var item in ContextoEstructura.abblClientes.ObtenerTodo())
             {
                 if (item.Id == tarjeta.IdCliente)
                 {
                     item.AgregarTarjeta(tarjeta);
                 }
-            }   
+            }
         }
-        public bool ElimnarCliente(string Id) {
+        public bool ElimnarCliente(string Id)
+        {
+            if (Id == null)
+            {
+                return false;
+            }
+
             var BuscandoClinetElim = ContextoEstructura.abblClientes.Buscar(Id);
 
-            if (BuscandoClinetElim == null) {
+            if (BuscandoClinetElim == null)
+            {
                 return false;
             }
 
             ContextoEstructura.abblClientes.Eliminar(BuscandoClinetElim.Dato);
 
-            //eliminado con exito
+            //eliminado 
             return true;
         }
 
-        
+
     }
 }
