@@ -2,7 +2,7 @@
 
 namespace Proyecto_Final.Models
 {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    //[JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Categoria
     {
         Supermercado,

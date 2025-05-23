@@ -2,26 +2,31 @@
     {
         "Id": "C001",
         "Name": "Juan Perez",
+        "DPI": "1234567890101",
         "tarjetas": []
     },
     {
         "Id": "C002",
         "Name": "Maria Gomez",
+        "DPI": "2345678901213",
         "tarjetas": []
     },
     {
         "Id": "C003",
         "Name": "Carlos Rodroguez",
+        "DPI": "3456789012325",
         "tarjetas": []
     },
     {
         "Id": "C004",
         "Name": "Ana Fernendez",
+        "DPI": "4567890123437",
         "tarjetas": []
     },
     {
         "Id": "C005",
         "Name": "Luis Martinez",
+        "DPI": "5678901234549",
         "tarjetas": []
     }
 ]

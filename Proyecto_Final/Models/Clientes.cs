@@ -13,6 +13,7 @@ namespace Models
 
         public string Id { get; set; }
         public string Name { get; set; }
+        public string DPI { get; set; }
         public List<Tarjeta> tarjetas { get; set; } = new List<Tarjeta>();
         //public ListaE_Simple<Tarjeta> tarjetas { get; set; } = new ListaE_Simple<Tarjeta>();   
 
@@ -24,10 +25,11 @@ namespace Models
 
         }
         //constructor con parametros
-        public Clientes(string id, string name)
+        public Clientes(string id, string name,string dpi)
         {
             this.Id = id;
             this.Name = name;
+            this.DPI = dpi;
             //tarjetas = new ListaE_Simple<Tarjeta>();    
         }
 
@@ -71,6 +73,7 @@ namespace Models
         {
             return $"\nId :{Id}," +
                 $"\nNombre :{Name}, " +
+                $"\nDPI :{DPI}, " + 
                 $"\nTarjetas Asociadas :  [{VerTarjetas()}], ";
                 
         }

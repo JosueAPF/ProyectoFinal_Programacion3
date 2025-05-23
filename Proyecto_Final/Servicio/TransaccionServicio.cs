@@ -17,8 +17,27 @@ namespace Proyecto_Final.Servicio
             MAXIMO_RECIENTES = 25;
         }
 
+        
+        public bool RealizarPago(Transaccion tx) {
+            //arbol Historial y busqueda 
+            ContextoEstructuras.abbTransacciones.Insertar(tx);
+            //Cola de Transacciones Pendientes
+            ContextoEstructuras.ColaTransacciones.Encolar(tx);
+
+            return true;
+        }
+        
+        public bool RealizarCompra(Transaccion tx)
+        {
+            ContextoEstructuras.abbTransacciones.Insertar(tx);
+            ContextoEstructuras.ColaTransacciones.Encolar(tx);
+
+            return true;
+        }
+
         public void NuevaTransaccion(Transaccion tx)
         {
+            /*
             Tarjeta tarjeta = null;
             //verificar que la tarjeta exista, no este bloqueada o no este a cero
             foreach(var t in ContextoEstructuras.colaTarjetas.ObtenerTodo())
@@ -38,11 +57,11 @@ namespace Proyecto_Final.Servicio
             if (!tarjeta.IsBlocked || tarjeta.Balance > 0m)
             {
 
+            }*/
                 // return;
                 ContextoEstructuras.abbTransacciones.Insertar(tx);
                 //Cola de Transacciones Pendientes
                 ContextoEstructuras.ColaTransacciones.Encolar(tx);
-            }
             
             
 

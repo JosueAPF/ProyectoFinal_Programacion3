@@ -52,14 +52,14 @@ namespace Proyecto_Final.Controllers
         [HttpPost("nuevoClientes")]
         public void NuevoCliente([FromBody] ClienteDTO_Escritura cliDTO)
         {
-            var cli = new Clientes(cliDTO.Id, cliDTO.Name);
+            var cli = new Clientes(cliDTO.Id, cliDTO.Name, cliDTO.DPI);
             clientServicio.AgregarClientes(cli);
         }
 
         [HttpPost("nuevoClienteTarjeta")]
         public ActionResult NuevoClienteTarjeta([FromBody] ClienteDTO_Lectura cliDTO)
         {
-            var cli = new Clientes(cliDTO.Id, cliDTO.Name);
+            var cli = new Clientes(cliDTO.Id, cliDTO.Name, cliDTO.DPI);
             clientServicio.AgregarClientes(cli);
 
             foreach (var tDto in cliDTO.Tarjetas)

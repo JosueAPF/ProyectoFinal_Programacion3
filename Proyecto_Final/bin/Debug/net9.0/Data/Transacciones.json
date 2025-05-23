@@ -28,14 +28,14 @@
     {
         "Id": "TX003",
         "Numero": "9876543210987654",
-        "Tipo": "Retiro",
+        "Tipo": "Compra",
         "Monto": 500.00,
         "FechaTransaccion": "2025-05-02T19:20:00",
         "Establecimiento": {
             "Id": "E003",
             "IdTrx": "TX003",
-            "Nombre": "Cajero Automático ATM123",
-            "Categoria": "ServiciosPublicos"
+            "Nombre": "Tienda online shopNow",
+            "Categoria": "Compra en Linea"
         }
     },
     {
@@ -48,7 +48,7 @@
             "Id": "E004",
             "IdTrx": "TX004",
             "Nombre": "Tienda Online ShopNow",
-            "Categoria": "ComprasEnLinea"
+            "Categoria": "Compras En Linea"
         }
     },
     {
@@ -80,7 +80,7 @@
     {
         "Id": "TX007",
         "Numero": "4561237896543210",
-        "Tipo": "Transferencia",
+        "Tipo": "Pago",
         "Monto": 500.00,
         "FechaTransaccion": "2025-07-01T18:05:00",
         "Establecimiento": {
@@ -139,7 +139,7 @@
             "Id": "E011",
             "IdTrx": "TX011",
             "Nombre": "Electrónica TechWorld",
-            "Categoria": "ComprasEnLinea"
+            "Categoria": "Pago Cuota"
         }
     }
 ]

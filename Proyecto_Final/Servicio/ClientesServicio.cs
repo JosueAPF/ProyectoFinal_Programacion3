@@ -76,7 +76,7 @@ namespace Proyecto_Final.Servicio
                 return null;
             }
 
-            var nueva = new Clientes(id, cliNombre.Name);
+            var nueva = new Clientes(id, cliNombre.Name, viejo.Dato.DPI);
             var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id, nueva);
             return nueva;
 

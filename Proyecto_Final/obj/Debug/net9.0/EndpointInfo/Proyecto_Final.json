@@ -739,7 +739,7 @@
         }
       }
     },
-    "/api/Transaccion/nuevaTransaccion": {
+    "/api/Transaccion/Pago": {
       "post": {
         "tags": [
           "Transaccion"
@@ -748,17 +748,65 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Transaccion"
+                "$ref": "#/components/schemas/PagoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Transaccion"
+                "$ref": "#/components/schemas/PagoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Transaccion"
+                "$ref": "#/components/schemas/PagoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaccion"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaccion"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaccion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Transaccion/Compra": {
+      "post": {
+        "tags": [
+          "Transaccion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompraDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompraDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompraDTO"
               }
             }
           }
@@ -1008,19 +1056,6 @@
         },
         "additionalProperties": false
       },
-      "Categoria": {
-        "enum": [
-          "Supermercado",
-          "Restaurantes",
-          "Gasolinera",
-          "Entretenimiento",
-          "Farmacia",
-          "Viajes",
-          "ComprasEnLinea",
-          "ServiciosPublicos"
-        ],
-        "type": "string"
-      },
       "ClienteDTO_Escritura": {
         "type": "object",
         "properties": {
@@ -1029,6 +1064,10 @@
             "nullable": true
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dpi": {
             "type": "string",
             "nullable": true
           }
@@ -1043,6 +1082,10 @@
             "nullable": true
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dpi": {
             "type": "string",
             "nullable": true
           },
@@ -1077,12 +1120,41 @@
             "type": "string",
             "nullable": true
           },
+          "dpi": {
+            "type": "string",
+            "nullable": true
+          },
           "tarjetas": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Tarjeta"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompraDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaTransaccion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "establecimiento": {
+            "$ref": "#/components/schemas/Establecimiento"
           }
         },
         "additionalProperties": false
@@ -1094,16 +1166,38 @@
             "type": "string",
             "nullable": true
           },
-          "idTrx": {
-            "type": "string",
-            "nullable": true
-          },
           "nombre": {
             "type": "string",
             "nullable": true
           },
           "categoria": {
-            "$ref": "#/components/schemas/Categoria"
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PagoDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaTransaccion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "establecimiento": {
+            "$ref": "#/components/schemas/Establecimiento"
           }
         },
         "additionalProperties": false
@@ -1200,11 +1294,7 @@
       "TipoTransaccion": {
         "enum": [
           "Compra",
-          "Pago",
-          "Retiro",
-          "Transferencia",
-          "Intereses",
-          "Comision"
+          "Pago"
         ],
         "type": "string"
       },

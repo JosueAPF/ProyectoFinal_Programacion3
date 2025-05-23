@@ -4,8 +4,6 @@ using Proyecto_Final.DTOs;
 using Proyecto_Final.Models;
 using Proyecto_Final.Servicio;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Proyecto_Final.Controllers
 {
     [Route("api/[controller]")]

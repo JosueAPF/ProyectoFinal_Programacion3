@@ -11,10 +11,6 @@ namespace Models
     public enum TipoTransaccion
     {
         Compra,
-        Pago,
-        Retiro,
-        Transferencia,
-        Intereses,
-        Comision
+        Pago
     }
 }

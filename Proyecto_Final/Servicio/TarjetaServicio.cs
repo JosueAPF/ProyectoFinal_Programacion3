@@ -6,18 +6,6 @@ using Proyecto_Final.Models;
 namespace Proyecto_Final.Servicio
 {
 
-    //hacer mas pruebas
-
-    //por arreglar :
-            /*
-             cuando se ingresan valores inexistentes en la mayoria de los endpoints 
-             no se esta retornando ningun mensaje
-             
-
-             que mas pide el enunciado por agregar a tarjetas
-             
-             */
-
     public class TarjetaServicio
     {
         public ContextDatos ContextoEstructuras { get; set; }
