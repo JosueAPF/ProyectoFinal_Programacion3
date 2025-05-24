@@ -69,6 +69,12 @@ namespace Models
             Transacciones.Clear();
         }
 
+        //corregido
+        public decimal SaldoDisponible() { 
+            return this.LimiteCredito - this.Balance;
+
+        }
+
         public void ElimTransBuscar(Transaccion trx) {
             for(int i=0;i<Transacciones.Count;i++) {
                 if (Transacciones[i].Equals(trx)) {

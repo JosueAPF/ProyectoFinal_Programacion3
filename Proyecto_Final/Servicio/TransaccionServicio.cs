@@ -6,19 +6,20 @@ namespace Proyecto_Final.Servicio
     public class TransaccionServicio
 
     {
-        //hacer mas pruebas
 
         public ContextDatos ContextoEstructuras { get; set; }
         public int MAXIMO_RECIENTES;
+        
 
         public TransaccionServicio(ContextDatos datos)
         {
             ContextoEstructuras = datos;
-            MAXIMO_RECIENTES = 25;
+            MAXIMO_RECIENTES = 35;
         }
 
-        
-        public bool RealizarPago(Transaccion tx) {
+
+        public bool RealizarPago(Transaccion tx)
+        {
             //arbol Historial y busqueda 
             ContextoEstructuras.abbTransacciones.Insertar(tx);
             //Cola de Transacciones Pendientes
@@ -26,7 +27,7 @@ namespace Proyecto_Final.Servicio
 
             return true;
         }
-        
+
         public bool RealizarCompra(Transaccion tx)
         {
             ContextoEstructuras.abbTransacciones.Insertar(tx);
@@ -37,38 +38,11 @@ namespace Proyecto_Final.Servicio
 
         public void NuevaTransaccion(Transaccion tx)
         {
-            /*
-            Tarjeta tarjeta = null;
-            //verificar que la tarjeta exista, no este bloqueada o no este a cero
-            foreach(var t in ContextoEstructuras.colaTarjetas.ObtenerTodo())
-            {
-                if (t.Numero == tx.Numero)
-                {
-                    tarjeta = t;
-                    break;
-                }
-            }
-          
-
-            if (tarjeta == null) {
-                return;
-            }
-
-            if (!tarjeta.IsBlocked || tarjeta.Balance > 0m)
-            {
-
-            }*/
-                // return;
-                ContextoEstructuras.abbTransacciones.Insertar(tx);
-                //Cola de Transacciones Pendientes
-                ContextoEstructuras.ColaTransacciones.Encolar(tx);
             
-            
-
-
-
+            ContextoEstructuras.abbTransacciones.Insertar(tx);
+            //Cola de Transacciones Pendientes
+            ContextoEstructuras.ColaTransacciones.Encolar(tx);
         }
-        //solo es del ABB
         public IEnumerable<Transaccion> ObtenerTransaciones()
         {
             return ContextoEstructuras.abbTransacciones.ObtenerTodo();
@@ -85,13 +59,14 @@ namespace Proyecto_Final.Servicio
 
             //desencolar la transaccion
             Transaccion trx = ContextoEstructuras.ColaTransacciones.Desencolar();
+            
             Tarjeta tarjetaEncontrada = null;
-     
-                foreach (var tarjeta in ContextoEstructuras.colaTarjetas.ObtenerTodo())
+
+            foreach (var tarjeta in ContextoEstructuras.colaTarjetas.ObtenerTodo())
             {
                 if (tarjeta.Numero == trx.Numero)
                 {
-                  
+
                     tarjetaEncontrada = tarjeta;
                     break;
                 }
@@ -105,41 +80,72 @@ namespace Proyecto_Final.Servicio
             //si la tarjeta ya esta bloqueadaa no admite ninguna trans
             if (tarjetaEncontrada.IsBlocked)
             {
-                //tarjetaEncontrada.ElimTransBuscar(trx);
+
                 return true;
             }
 
             //ajuste del balance correspondiente a la tarjeta
-            tarjetaEncontrada.Balance -= trx.Monto;//debitamos el gasto
-            if (tarjetaEncontrada.Balance <= 0m) { 
-                tarjetaEncontrada.Balance = 0m; 
-                tarjetaEncontrada.IsBlocked = true;
-            }
-
-            //si la transaccion excede el monto de la tranjeta
             /*
-            if (trx.Monto > tarjetaEncontrada.Balance) {
+            tarjetaEncontrada.Balance -= trx.Monto;//debitamos el gasto
+            if (tarjetaEncontrada.Balance <= 0m)
+            {
                 tarjetaEncontrada.Balance = 0m;
                 tarjetaEncontrada.IsBlocked = true;
-                return true;
             }*/
 
+            /******************Tipo de Transcciones******************/
+
+            if (trx.Tipo == TipoTransaccion.Pago)
+            {
+                //abono a deudas
+                decimal DSaldado = tarjetaEncontrada.Balance - trx.Monto;
+                if (DSaldado < 0m)
+                {
+                    tarjetaEncontrada.Balance = 0m;
+                }
+                else {
+                    tarjetaEncontrada.Balance = DSaldado;
+                }
+
+                //caso especiales si esta bloqueada pero  ago el pago correspondiente
+                if (tarjetaEncontrada.IsBlocked && ((tarjetaEncontrada.LimiteCredito - tarjetaEncontrada.Balance) > 0m)) {
+                    tarjetaEncontrada.IsBlocked = false;
+                }
+            }
+            if (trx.Tipo == TipoTransaccion.Compra)
+            {
+                decimal NuevaDeuda = tarjetaEncontrada.Balance + trx.Monto;
+                if (NuevaDeuda > tarjetaEncontrada.LimiteCredito)
+                {
+                    tarjetaEncontrada.Balance = tarjetaEncontrada.LimiteCredito;
+                    tarjetaEncontrada.IsBlocked = true;
+                }
+                else { 
+                    tarjetaEncontrada.Balance += trx.Monto;
+                
+                }
+
+            }
             //agregamos la transaccion al histrial de las tarjetas
             bool EsaYaExiste = false;
-            foreach (var t in tarjetaEncontrada.Transacciones) {
-                if (t.Id == trx.Id) {
+            foreach (var t in tarjetaEncontrada.Transacciones)
+            {
+                if (t.Id == trx.Id)
+                {
                     EsaYaExiste = true;
                     break;
                 }
             }
-            if (!EsaYaExiste) {
+            if (!EsaYaExiste)
+            {
                 tarjetaEncontrada.AgregarTransaccion(trx);
             }
 
 
             //agregamos la transaccion a la pila de recientes   
             ContextoEstructuras.pilaTransacciones.Push(trx);
-            while (ContextoEstructuras.pilaTransacciones.ObtenerTodo().Count() > MAXIMO_RECIENTES) {
+            while (ContextoEstructuras.pilaTransacciones.ObtenerTodo().Count() > MAXIMO_RECIENTES)
+            {
                 ContextoEstructuras.pilaTransacciones.Pop();
             }
             return true;
@@ -160,7 +166,7 @@ namespace Proyecto_Final.Servicio
             }
         }
 
-        
+
 
         //Mostrar cola de Pendientes
         public IEnumerable<Transaccion> ObtenerPendientes_Cola()

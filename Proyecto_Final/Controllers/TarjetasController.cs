@@ -58,10 +58,10 @@ namespace Proyecto_Final.Controllers
             return  Ok(tarjetaServicio.ObtenerTarjetas());
         }
 
-        [HttpGet("verBalance/{numeroTarjeta}")]
+        [HttpGet("verSaldo/{numeroTarjeta}")]
         public ActionResult<string> VerBalance(string numeroTarjeta)
         {
-            var tarjeta = tarjetaServicio.verBalance(numeroTarjeta);
+            var tarjeta = tarjetaServicio.SaldoDisponible(numeroTarjeta);
             return Ok(tarjeta);
 
         }

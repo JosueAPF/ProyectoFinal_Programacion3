@@ -393,7 +393,7 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "VerBalance",
-    "RelativePath": "api/Tarjetas/verBalance/{numeroTarjeta}",
+    "RelativePath": "api/Tarjetas/verSaldo/{numeroTarjeta}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

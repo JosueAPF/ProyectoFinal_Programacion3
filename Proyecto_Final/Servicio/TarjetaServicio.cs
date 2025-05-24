@@ -21,15 +21,15 @@ namespace Proyecto_Final.Servicio
         public IEnumerable<Tarjeta> ObtenerTarjetas()
         {
             return ContextoEstructuras.colaTarjetas.ObtenerTodo();
-           
-        }   
+
+        }
 
         public void AgregarTarjeta(Tarjeta tarjeta)
         {
             ContextoEstructuras.colaTarjetas.Encolar(tarjeta);
         }
 
-       
+
 
         /*Busqueda Por Id*/
         public string BuscarTarjetaxId(string id)
@@ -41,67 +41,94 @@ namespace Proyecto_Final.Servicio
         public Tarjeta BuscarTarjetaxNumero(string nume)
         {
             var tarjetas = ContextoEstructuras.colaTarjetas.ObtenerTodo();
-            Tarjeta tarjeta = null;   
+            Tarjeta tarjeta = null;
             foreach (var item in tarjetas)
             {
                 if (item.Numero == nume)
                 {
-                    tarjeta =  item;
+                    tarjeta = item;
                 }
             }
             return tarjeta;
         }
 
-        public void agregarTransaccion(Transaccion trx)
+        //corregido ver Saldo Disponible
+        public string SaldoDisponible(string numTarjeta)
         {
-            foreach (var item in ContextoEstructuras.colaTarjetas.ObtenerTodo())
+            var tarjeta = BuscarTarjetaxNumero(numTarjeta);
+            if (tarjeta == null)
             {
-                if (item.Numero == trx.Numero)
-                {
-
-                    //si esta bloqueada no agrega tranasaccion
-                    if (item.IsBlocked) {
-                        return;
-                    }
-                    //si exede el balance de la tarjeta no agrega transccion
-                    if (trx.Monto > item.Balance) {
-                        return;
-                    }
-
-                    item.AgregarTransaccion(trx);
-                    return;
-                }
+                return "Tarjeta no encontrada";
             }
-        }
-        /*Prueba #2 balance*/
-        public string verBalance(string numTarjea) {
-            var tarjeta = BuscarTarjetaxNumero(numTarjea);
-            if (tarjeta == null) {
-                return $"tarjeta {tarjeta} no Existe";
+            if (tarjeta.IsBlocked)
+            {
+                return "Esta Tarjeta esta Bloqueada";
             }
-
-            if (tarjeta.IsBlocked) {
-                return $"tarjeta {tarjeta}, Esta Bloqueada";
-            }
-            
-            return $"Id Tarjeta :{tarjeta.Id}, Saldo : Q{tarjeta.Balance}";
-
+            return $"Limite de Credito :Q{tarjeta.LimiteCredito} - Deuda : Q{tarjeta.Balance}  Saldo Disponible = Q{tarjeta.SaldoDisponible()}";
         }
 
+
+        public string AumentoLimite(string numeroTarjeta, decimal nuevoLimite)
+        {
+            var tarjeta = BuscarTarjetaxNumero(numeroTarjeta);
+            decimal LimitesPermitidos = tarjeta.LimiteCredito * 2m; //no mayores a 2 limites de credito
+
+            if (tarjeta == null)
+            {
+                return "Tarjeta No Encontrada!";
+            }
+
+
+            if (nuevoLimite < tarjeta.LimiteCredito)
+            {
+                return $"Este Limite {nuevoLimite}, no puede ser menor al limite anteriro {tarjeta.LimiteCredito}";
+            }
+
+            if (tarjeta.IsBlocked == true && tarjeta.Balance == 0m)
+            {
+                return $"La tarjeta se encuentra Bloqueada";
+            }
+
+            if (nuevoLimite > LimitesPermitidos)
+            {
+                return $"El nuevo limite no pude exceder los Limites Permitidos";
+            }
+
+            if (nuevoLimite < tarjeta.Balance)
+            {
+                return $"El nuevo Limite no puede ser menor a la deuda actual {tarjeta.Balance}";
+            }
+
+            //creacion del registro Cola<>
+            var cambio_agregarLimite = new CambioLimiteTarjeta(tarjeta.IdCliente, DateTime.UtcNow, nuevoLimite, tarjeta.LimiteCredito);
+
+
+            //guardamos en el historial
+            HistorialLimites.Encolar(cambio_agregarLimite);
+
+            tarjeta.LimiteCredito = nuevoLimite;
+
+            return "Limite de Credito Actualizado!";
+        }
+
+
+
+       
         /*Prueba #1 cambio de pin**/
         public string CabioPin(string numtarjeta, int nuevoPin)
         {
             int CambiosRealizados = 0;
             var tarjeta = BuscarTarjetaxNumero(numtarjeta);
 
-            if (tarjeta == null) {
+            if (tarjeta == null)
+            {
                 return $"tarjeta {numtarjeta} no Existe";
             }
 
             tarjeta.Pin = nuevoPin;
             CambiosRealizados++;
 
-            
+
             return $"Tarjeta Id :{tarjeta.Id}, Numero Tarjeta: {tarjeta.Numero}, Nuevo Pin {nuevoPin}";
         }
 
@@ -127,25 +154,17 @@ namespace Proyecto_Final.Servicio
             return $"Tarjeta Id :{tarjeta.Id}, Numero Tarjeta: {tarjeta.Numero}, Esta Desbloqueada";
         }
 
-        public bool AumentoLimite(string numeroTarjeta, decimal nuevoLimite) {
-            var tarjeta = BuscarTarjetaxNumero(numeroTarjeta);
-
-            if (tarjeta == null) {
-                return false;
+        public decimal verDeuda(string numtarjeta) {
+            var tarjeta = BuscarTarjetaxNumero(numtarjeta);
+            if (tarjeta == null)
+            {
+                return 0m;
             }
-
-            //creacion del registro Cola<>
-            var cambio_agregarLimite = new CambioLimiteTarjeta(tarjeta.IdCliente,DateTime.UtcNow,nuevoLimite, tarjeta.LimiteCredito);
-
-
-            //guardamos en el historial
-            HistorialLimites.Encolar(cambio_agregarLimite);
-
-            tarjeta.LimiteCredito = nuevoLimite;
-
-            return true;
+            return tarjeta.Balance;
         }
 
+
+        /*Historial de Cambio de aumento de limite de una tarjeta*/
         public IEnumerable<CambioLimiteTarjeta>? verCambios_LimiteCredito(string idTarjeta)
         {
             if (HistorialLimites.estaVacio())

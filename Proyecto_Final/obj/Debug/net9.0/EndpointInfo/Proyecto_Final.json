@@ -522,7 +522,7 @@
         }
       }
     },
-    "/api/Tarjetas/verBalance/{numeroTarjeta}": {
+    "/api/Tarjetas/verSaldo/{numeroTarjeta}": {
       "get": {
         "tags": [
           "Tarjetas"

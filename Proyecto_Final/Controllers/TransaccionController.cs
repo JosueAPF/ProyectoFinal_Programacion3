@@ -63,7 +63,7 @@ namespace Proyecto_Final.Controllers
             Transaccion nuevoPago = new Transaccion(
             id: trx.Id,
             number: trx.Numero,
-            tipo: TipoTransaccion.Pago,
+            tipo: TipoTransaccion.Compra,
             monto: trx.Monto,
             fechaTransaccion: trx.FechaTransaccion,
             est: trx.Establecimiento
