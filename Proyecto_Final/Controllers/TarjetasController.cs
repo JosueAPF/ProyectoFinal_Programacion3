@@ -117,5 +117,40 @@ namespace Proyecto_Final.Controllers
             return Ok(Historial);
         }
 
+        [HttpGet("verPagos/{numeroTarjeta}")]
+        public ActionResult<IEnumerable<Transaccion>> verPagos(string numeroTarjeta) {
+            var tarjeta = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            if (tarjeta == null) {
+                return BadRequest($"{numeroTarjeta}, no se encuentra en el Sistema");
+            }
+
+            var MisPagos = tarjetaServicio.verPagos(numeroTarjeta);
+            if (MisPagos == null) {
+                return BadRequest("Datos no cargados o genere un Pago");
+            }
+
+            return Ok(MisPagos);
+        
+        }
+        [HttpGet("verCompras/{numeroTarjeta}")]
+        public ActionResult<IEnumerable<Transaccion>> verCompras(string numeroTarjeta)
+        {
+            var tarjeta = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            if (tarjeta == null)
+            {
+                return BadRequest($"{numeroTarjeta}, no se encuentra en el Sistema");
+            }
+
+            var MisCompras = tarjetaServicio.verCompras(numeroTarjeta);
+            if (MisCompras == null)
+            {
+                return BadRequest("Datos no cargados o Genere una Compra");
+            }
+
+            return Ok(MisCompras);  
+
+
+        }
+
     }
 }

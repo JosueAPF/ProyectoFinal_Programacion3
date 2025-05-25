@@ -31,17 +31,23 @@ namespace Estructuras
                 Ultimo = nuevo;
             }
         }
-        public string Mostrar() {
-            StringBuilder sb = new StringBuilder();
+        public T Mostrar() {
             Nodo<T> auxCabeza = Cabeza;
+            T dato = default(T);    
             while (auxCabeza != null)
             {
-                sb.AppendLine(auxCabeza.ToString());
+                dato = auxCabeza.Dato;
                 auxCabeza = auxCabeza.Sig;
             }
-            return sb.ToString();
+            return dato;
         }
         
+        public void EliminarTodo()
+        {
+            Cabeza = null;
+            Ultimo = null;
+        }   
+
         public T Eliminar(int id) {
             if (Cabeza == null) {
                 return default(T);
@@ -83,9 +89,12 @@ namespace Estructuras
             return sb.ToString(); 
         }
         
-     
+        public bool EstaVacio()
+        {
+            return Cabeza == null;
+        }   
 
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerable<T>  ObtenerTodo()
         {
             Nodo<T> actual = Cabeza;
             while (actual != null)

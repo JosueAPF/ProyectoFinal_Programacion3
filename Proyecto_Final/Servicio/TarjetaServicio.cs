@@ -16,7 +16,6 @@ namespace Proyecto_Final.Servicio
             HistorialLimites = new Cola<CambioLimiteTarjeta>();
         }
 
-        /*Metodos CRUD*/
 
         public IEnumerable<Tarjeta> ObtenerTarjetas()
         {
@@ -53,6 +52,7 @@ namespace Proyecto_Final.Servicio
         }
 
         //corregido ver Saldo Disponible
+        //limite de credito - balance = saldo de Tarjeta
         public string SaldoDisponible(string numTarjeta)
         {
             var tarjeta = BuscarTarjetaxNumero(numTarjeta);
@@ -113,7 +113,7 @@ namespace Proyecto_Final.Servicio
 
 
 
-       
+
         /*Prueba #1 cambio de pin**/
         public string CabioPin(string numtarjeta, int nuevoPin)
         {
@@ -132,6 +132,7 @@ namespace Proyecto_Final.Servicio
             return $"Tarjeta Id :{tarjeta.Id}, Numero Tarjeta: {tarjeta.Numero}, Nuevo Pin {nuevoPin}";
         }
 
+        /**/
         public string BloquearTarjeta(string numtarjeta)
         {
             var tarjeta = BuscarTarjetaxNumero(numtarjeta);
@@ -153,8 +154,9 @@ namespace Proyecto_Final.Servicio
             tarjeta.IsBlocked = false;
             return $"Tarjeta Id :{tarjeta.Id}, Numero Tarjeta: {tarjeta.Numero}, Esta Desbloqueada";
         }
-
-        public decimal verDeuda(string numtarjeta) {
+        /*deuda*/
+        public decimal verDeuda(string numtarjeta)
+        {
             var tarjeta = BuscarTarjetaxNumero(numtarjeta);
             if (tarjeta == null)
             {
@@ -178,6 +180,53 @@ namespace Proyecto_Final.Servicio
             }
 
             return HistorialLimites.ObtenerTodo();
+        }
+
+        //historial de pagos
+        public void HistorialesTransacciones(string numTarjeta)
+        {
+            var tarjeta = BuscarTarjetaxNumero(numTarjeta);
+            if (tarjeta == null)
+            {
+                return;
+            }
+
+            //esta inicial de las listas E
+            ContextoEstructuras.ListaPagos.EliminarTodo();
+            ContextoEstructuras.ListaCompras.EliminarTodo();
+            var enumerador = tarjeta.Transacciones.GetEnumerator();
+
+
+            foreach (var item in tarjeta.Transacciones)
+            {
+                if (item.Tipo == TipoTransaccion.Pago)
+                {
+
+                    ContextoEstructuras.ListaPagos.Enlistar(item);
+
+                }
+
+                if (item.Tipo == TipoTransaccion.Compra)
+                {
+
+                    ContextoEstructuras.ListaCompras.Enlistar(item);
+                }
+            }
+
+
+        }
+
+        public IEnumerable<Transaccion> verPagos(string numtarjeta)
+        {
+            HistorialesTransacciones(numtarjeta);
+            return ContextoEstructuras.ListaPagos.ObtenerTodo();
+        }
+
+        //historial de pagos
+        public IEnumerable<Transaccion> verCompras(string numtarjeta)
+        {
+            HistorialesTransacciones(numtarjeta);
+            return ContextoEstructuras.ListaCompras.ObtenerTodo();
         }
     }
 }

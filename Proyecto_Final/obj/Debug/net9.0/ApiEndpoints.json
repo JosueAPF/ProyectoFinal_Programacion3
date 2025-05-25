@@ -392,6 +392,58 @@
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "verCompras",
+    "RelativePath": "api/Tarjetas/verCompras/{numeroTarjeta}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Models.Transaccion, Proyecto_Final, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "verPagos",
+    "RelativePath": "api/Tarjetas/verPagos/{numeroTarjeta}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Models.Transaccion, Proyecto_Final, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "VerBalance",
     "RelativePath": "api/Tarjetas/verSaldo/{numeroTarjeta}",
     "HttpMethod": "GET",

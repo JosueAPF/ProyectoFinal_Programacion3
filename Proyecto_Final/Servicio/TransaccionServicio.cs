@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models;
 using Proyecto_Final.ArmadoEstructuras;
 
 namespace Proyecto_Final.Servicio
@@ -76,46 +77,41 @@ namespace Proyecto_Final.Servicio
             {
                 return false;
             }
-
-            //si la tarjeta ya esta bloqueadaa no admite ninguna trans
-            if (tarjetaEncontrada.IsBlocked)
-            {
-
-                return true;
-            }
-
-            //ajuste del balance correspondiente a la tarjeta
-            /*
-            tarjetaEncontrada.Balance -= trx.Monto;//debitamos el gasto
-            if (tarjetaEncontrada.Balance <= 0m)
-            {
-                tarjetaEncontrada.Balance = 0m;
-                tarjetaEncontrada.IsBlocked = true;
-            }*/
+           
 
             /******************Tipo de Transcciones******************/
 
             if (trx.Tipo == TipoTransaccion.Pago)
             {
-                //abono a deudas
-                decimal DSaldado = tarjetaEncontrada.Balance - trx.Monto;
-                if (DSaldado < 0m)
-                {
-                    tarjetaEncontrada.Balance = 0m;
-                }
-                else {
-                    tarjetaEncontrada.Balance = DSaldado;
+                if (trx.Monto < 0) {
+                    return false;
                 }
 
-                //caso especiales si esta bloqueada pero  ago el pago correspondiente
-                if (tarjetaEncontrada.IsBlocked && ((tarjetaEncontrada.LimiteCredito - tarjetaEncontrada.Balance) > 0m)) {
+                if (tarjetaEncontrada.Balance == 0)
+                    return false; // Nada que pagar
+
+                // mejor
+                if (trx.Monto > 0 && trx.Monto <= tarjetaEncontrada.Balance)
+                {
+                   tarjetaEncontrada.Balance -= trx.Monto;
+                   
+                }
+
+
+                if (tarjetaEncontrada.IsBlocked && tarjetaEncontrada.SaldoDisponible() > 0m) { 
                     tarjetaEncontrada.IsBlocked = false;
                 }
             }
             if (trx.Tipo == TipoTransaccion.Compra)
             {
+                if (tarjetaEncontrada.IsBlocked)
+                {
+
+                    return true;
+                }
+
                 decimal NuevaDeuda = tarjetaEncontrada.Balance + trx.Monto;
-                if (NuevaDeuda > tarjetaEncontrada.LimiteCredito)
+                if (NuevaDeuda >= tarjetaEncontrada.LimiteCredito)
                 {
                     tarjetaEncontrada.Balance = tarjetaEncontrada.LimiteCredito;
                     tarjetaEncontrada.IsBlocked = true;

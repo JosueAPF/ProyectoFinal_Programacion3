@@ -42,7 +42,6 @@ C:\Users\josue\Documents\Ejercicios_C#\Proyecto_Final_pr3\Proyecto_API_Rest\Proy
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\appsettings.json
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Data\Clientes.json
-C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Data\Establecimiento.json
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Data\Tarjetas.json
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Data\Transacciones.json
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Proyecto_Final.staticwebassets.endpoints.json

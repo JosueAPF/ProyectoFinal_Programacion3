@@ -75,6 +75,8 @@ namespace Models
 
         }
 
+       
+
         public void ElimTransBuscar(Transaccion trx) {
             for(int i=0;i<Transacciones.Count;i++) {
                 if (Transacciones[i].Equals(trx)) {

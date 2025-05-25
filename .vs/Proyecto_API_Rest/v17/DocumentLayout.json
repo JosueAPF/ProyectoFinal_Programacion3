@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\data\\establecimiento.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\data\\establecimiento.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\estructuras\\tablahash\\listaenlazada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\estructuras\\tablahash\\listaenlazada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\armadoestructuras\\contextdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\armadoestructuras\\contextdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\servicio\\transaccionservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\servicio\\transaccionservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\servicio\\tarjetaservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\servicio\\tarjetaservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\models\\tarjetas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\models\\tarjetas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\controllers\\tarjetascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\controllers\\tarjetascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\servicio\\transaccionservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\servicio\\transaccionservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\estructuras\\tablahash\\tablahash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\estructuras\\tablahash\\tablahash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\estructuras\\tablahash\\nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\estructuras\\tablahash\\nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\estructuras\\listae_simple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|solutionrelative:proyecto_final\\estructuras\\listae_simple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E6F301F1-EFDF-4BA8-A985-184E2EB43CB4}|Proyecto_Final\\Proyecto_Final.csproj|c:\\users\\josue\\desktop\\proyecto_final\\proyectofinal_programacion3\\proyecto_final\\controllers\\transaccioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,58 +51,110 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Establecimiento.json",
-              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Data\\Establecimiento.json",
-              "RelativeDocumentMoniker": "Proyecto_Final\\Data\\Establecimiento.json",
-              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Data\\Establecimiento.json",
-              "RelativeToolTip": "Proyecto_Final\\Data\\Establecimiento.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-24T02:06:02.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Tarjetas.cs",
-              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Models\\Tarjetas.cs",
-              "RelativeDocumentMoniker": "Proyecto_Final\\Models\\Tarjetas.cs",
-              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Models\\Tarjetas.cs",
-              "RelativeToolTip": "Proyecto_Final\\Models\\Tarjetas.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAIA3wBIAAAAsAAAAAAAAAA==",
+              "Title": "ListaEnlazada.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\ListaEnlazada.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\Estructuras\\TablaHash\\ListaEnlazada.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\ListaEnlazada.cs",
+              "RelativeToolTip": "Proyecto_Final\\Estructuras\\TablaHash\\ListaEnlazada.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T00:43:30.788Z",
+              "WhenOpened": "2025-05-25T05:33:59.975Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "TablaHash.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\TablaHash.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\Estructuras\\TablaHash\\TablaHash.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\TablaHash.cs",
+              "RelativeToolTip": "Proyecto_Final\\Estructuras\\TablaHash\\TablaHash.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T05:32:42.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TarjetasController.cs",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Controllers\\TarjetasController.cs",
               "RelativeDocumentMoniker": "Proyecto_Final\\Controllers\\TarjetasController.cs",
               "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Controllers\\TarjetasController.cs",
               "RelativeToolTip": "Proyecto_Final\\Controllers\\TarjetasController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAcwDYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T00:45:46.217Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "TarjetaServicio.cs",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TarjetaServicio.cs",
               "RelativeDocumentMoniker": "Proyecto_Final\\Servicio\\TarjetaServicio.cs",
               "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TarjetaServicio.cs",
               "RelativeToolTip": "Proyecto_Final\\Servicio\\TarjetaServicio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAANYAAAAAAAAAAAAuwNwAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T00:45:23.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "TransaccionServicio.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TransaccionServicio.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\Servicio\\TransaccionServicio.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TransaccionServicio.cs",
+              "RelativeToolTip": "Proyecto_Final\\Servicio\\TransaccionServicio.cs",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAiwLAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T00:56:41.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ContextDatos.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\ArmadoEstructuras\\ContextDatos.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\ArmadoEstructuras\\ContextDatos.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\ArmadoEstructuras\\ContextDatos.cs",
+              "RelativeToolTip": "Proyecto_Final\\ArmadoEstructuras\\ContextDatos.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T02:30:18.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Nodo.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\Nodo.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\Estructuras\\TablaHash\\Nodo.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\TablaHash\\Nodo.cs",
+              "RelativeToolTip": "Proyecto_Final\\Estructuras\\TablaHash\\Nodo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T05:34:21.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ListaE_Simple.cs",
+              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\ListaE_Simple.cs",
+              "RelativeDocumentMoniker": "Proyecto_Final\\Estructuras\\ListaE_Simple.cs",
+              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Estructuras\\ListaE_Simple.cs",
+              "RelativeToolTip": "Proyecto_Final\\Estructuras\\ListaE_Simple.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAwGAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T02:30:03.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "TransaccionController.cs",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Controllers\\TransaccionController.cs",
               "RelativeDocumentMoniker": "Proyecto_Final\\Controllers\\TransaccionController.cs",
@@ -98,21 +162,7 @@
               "RelativeToolTip": "Proyecto_Final\\Controllers\\TransaccionController.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAcwDwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T23:59:41.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TransaccionServicio.cs",
-              "DocumentMoniker": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TransaccionServicio.cs",
-              "RelativeDocumentMoniker": "Proyecto_Final\\Servicio\\TransaccionServicio.cs",
-              "ToolTip": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\Servicio\\TransaccionServicio.cs",
-              "RelativeToolTip": "Proyecto_Final\\Servicio\\TransaccionServicio.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAuwF8AAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T00:56:41.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T23:59:41.114Z"
             }
           ]
         }

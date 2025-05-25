@@ -2,7 +2,7 @@
 using Estructuras;
 using Models;
 using Proyecto_Final.Estructuras;
-
+using TablaHash_E;
 
 namespace Proyecto_Final.ArmadoEstructuras
 {
@@ -12,9 +12,14 @@ namespace Proyecto_Final.ArmadoEstructuras
         public Cola<Clientes> colaClientes { get; set; }    
         public Cola<Tarjeta> colaTarjetas { get; set; }
 
+        /// <summary>
+        /// La tabla Hash
+        /// </summary>
+        public TablaHash<Clientes> tablaClientes { get; set; } = new TablaHash<Clientes>();  
 
 
         /*arboles**/
+
         //clientes
         public ABB<Clientes> abblClientes { get; set; } 
         //para Login y logout de usuarios
@@ -24,6 +29,12 @@ namespace Proyecto_Final.ArmadoEstructuras
         public ABB<Transaccion> abbTransacciones { get; set; } 
         public Cola<Transaccion> ColaTransacciones { get; set; }
         public Pila<Transaccion> pilaTransacciones { get; set; }
+
+        /*para el historial de pagos y compras*/
+        public ListaE_Simple<Transaccion> ListaPagos { get; set; }
+        public ListaE_Simple<Transaccion> ListaCompras { get; set; }
+
+        
 
         public ContextDatos(DeserealizadorGenerico<Clientes> clientesDes,
             DeserealizadorGenerico<Tarjeta> tarjetasDes,
@@ -35,6 +46,10 @@ namespace Proyecto_Final.ArmadoEstructuras
             colaTarjetas = new Cola<Tarjeta>();
             abbTransacciones = new ABB<Transaccion>();  
             pilaTransacciones = new Pila<Transaccion>();
+
+            /*historial de transacciones Lista Enlazada*/
+            ListaPagos = new ListaE_Simple<Transaccion>();
+            ListaCompras = new ListaE_Simple<Transaccion>();
 
 
 
