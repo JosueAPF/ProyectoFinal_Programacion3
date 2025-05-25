@@ -19,37 +19,14 @@ namespace Proyecto_Final.Servicio
         {
             ///ContextoEstructura.colaClientes.Encolar(cliente);
             ContextoEstructura.abblClientes.Insertar(cliente);
+            ContextoEstructura.tablaClientes.Insertar(cliente);
         }
         public IEnumerable<Clientes> ObtenerClientes()
         {
             return ContextoEstructura.abblClientes.ObtenerTodo();
 
         }
-        /*
-        public IEnumerable<Clientes> ObtenerCliente_Tarjeta()
-        {
-            var clientes = ContextoEstructura.abblClientes.ObtenerTodo();
-            var tar = ContextoEstructura.colaTarjetas.ObtenerTodo();
-
-            foreach (var itemC in clientes)
-            {
-                itemC.EliminarTarjeta();
-            }
-
-            foreach (var itemT in tar)
-            {
-                foreach (var itemC in clientes)
-                {
-
-                    if (itemT.IdCliente == itemC.Id)
-                    {
-                        itemC.AgregarTarjeta(itemT);
-                    }
-                }
-            }
-
-            return clientes;
-        }*/
+        
 
         public string BuscarCliente(string id)
         {
@@ -78,6 +55,8 @@ namespace Proyecto_Final.Servicio
 
             var nueva = new Clientes(id, cliNombre.Name, viejo.Dato.DPI);
             var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id, nueva);
+            //a prueba
+            var ModificarTabla = ContextoEstructura.tablaClientes.Modificar(id, nueva);
             return nueva;
 
         }
@@ -106,6 +85,7 @@ namespace Proyecto_Final.Servicio
             }
 
             ContextoEstructura.abblClientes.Eliminar(BuscandoClinetElim.Dato);
+            ContextoEstructura.tablaClientes.Eliminar(BuscandoClinetElim.Dato.Id);
 
             //eliminado 
             return true;

@@ -194,6 +194,22 @@
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
+    "Method": "verResumenCliente",
+    "RelativePath": "api/Clientes/Resumen/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "ObtenerCliente",
     "RelativePath": "api/Clientes/VerClientes",
     "HttpMethod": "GET",

@@ -25,6 +25,26 @@ namespace Proyecto_Final.Servicio
 
         public void AgregarTarjeta(Tarjeta tarjeta)
         {
+            //agregando a las lista de el Modelo Clinetes
+            foreach (var item in ContextoEstructuras.abblClientes.ObtenerTodo())
+            {
+                if (item.Id == tarjeta.IdCliente)
+                {
+                    item.AgregarTarjeta(tarjeta);
+                }
+                
+            }
+            //agregando a las lista de el Modelo Clinetes
+            foreach (var item in ContextoEstructuras.tablaClientes.ObtenerTodo())
+            {
+                if (item.Id == tarjeta.IdCliente)
+                {
+                    item.AgregarTarjeta(tarjeta);
+                }
+               
+            }
+
+
             ContextoEstructuras.colaTarjetas.Encolar(tarjeta);
         }
 
@@ -227,6 +247,14 @@ namespace Proyecto_Final.Servicio
         {
             HistorialesTransacciones(numtarjeta);
             return ContextoEstructuras.ListaCompras.ObtenerTodo();
+        }
+
+        //desencolado customizado para la cola (desencolado tipo ListaE)
+        public string DesencolarTipoLista(string numeroTarjeta) {
+            var buscarT = BuscarTarjetaxNumero(numeroTarjeta);
+            ContextoEstructuras.colaTarjetas.Desencolar_TipoLista(buscarT.Id);
+
+            return $"se elimino :{buscarT}";
         }
     }
 }

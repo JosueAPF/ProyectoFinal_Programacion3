@@ -13,14 +13,17 @@ namespace Proyecto_Final.Controllers
     {
         public ClientesServicio clientServicio { get; set; }
         public TarjetaServicio tarjetaServicio { get; set; }
+
+        public ResumenServicio resServicio { get; set; }
   
 
         public ServicioUsuariosActivos servicioUsuariosActivos { get; set; }
-        public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio, ServicioUsuariosActivos activos)
+        public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio, ServicioUsuariosActivos activos, ResumenServicio resServicio)
         {
             clientServicio = servicio;
             this.servicioUsuariosActivos = activos;
             this.tarjetaServicio = tarjetaServicio;
+            this.resServicio = resServicio;
         }
         [HttpGet("login/{clienteId}")]
         public ActionResult<bool> Login(string clienteId)
@@ -128,6 +131,13 @@ namespace Proyecto_Final.Controllers
                 return NotFound("Posiblemente El Cliente No Exista!");
             }
             return Ok(eliminar);
-        }   
+        }
+
+        [HttpGet("Resumen/{id}")]
+        public ActionResult verResumenCliente(string id) {
+            var resumen = resServicio.ResumenCliente(id);    
+            return Ok(resumen);
+        
+        }
     }
 }

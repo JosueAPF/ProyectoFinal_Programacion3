@@ -25,6 +25,7 @@ builder.Services.AddSingleton<ClientesServicio>();
 builder.Services.AddSingleton<ServicioUsuariosActivos>();
 builder.Services.AddSingleton<TarjetaServicio>();
 builder.Services.AddSingleton<TransaccionServicio>();
+builder.Services.AddSingleton<ResumenServicio>();
 
 
 // Configurar Swagger

@@ -27,17 +27,17 @@ namespace TablaHash_E
             return this;    
         }
 
-        public string BuscarNodo(string id)
+        public Nodo<T> BuscarNodo(string id)
         {
             Nodo<T> temp = primero;
             while (temp != null )
             {
                 if (temp.Dato.Id.Equals(id)) { 
-                    return $"{temp.Dato}";
+                    return temp;
                 }
                 temp = temp.Enlaze;
             }
-           return "\tNo existe Esa Clave";   
+           return null;   
         }
         
        
@@ -94,6 +94,28 @@ namespace TablaHash_E
             }
             anterior.Enlaze = temp.Enlaze;  
 
-        }   
+        }
+
+        public string Modificar(string anteriror, T datonuevo) {
+            Nodo<T> clienteBuscar = BuscarNodo(anteriror);
+            if (clienteBuscar == null) {
+                return "Ese Cliente no existe!";
+            }
+
+            Eliminar(clienteBuscar.Dato.Id);
+            InsertarCabeza(datonuevo);
+            return "Modificado con Existo!";
+
+        }
+
+        public IEnumerable<T> ObtenerTodo()
+        {
+            Nodo<T> actual = primero;
+            while (actual != null)
+            {
+                yield return actual.Dato;
+                actual = actual.Enlaze;
+            }
+        }
     }
 }

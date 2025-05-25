@@ -358,6 +358,28 @@
         }
       }
     },
+    "/api/Clientes/Resumen/{id}": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Tarjetas/nuevaTarjeta": {
       "post": {
         "tags": [

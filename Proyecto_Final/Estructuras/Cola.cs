@@ -89,6 +89,34 @@ namespace Estructuras
             return Primero == null;
         }
 
+        public T Desencolar_TipoLista(string id) {
+            if (Primero == null)
+            {
+                return default(T);
+            }
+            //caso si es la cabeza
+            if (Primero.Dato.Id.Equals(id))
+            {
+                Nodo<T> NodoElim = Primero;
+                Primero = Primero.Sig;
+                NodoElim.Sig = null;
+                return NodoElim.Dato;
+            }
+
+            //caso si no es la cabeza
+            Nodo<T> actual = Primero;
+            Nodo<T> anteriror = null;
+
+            while (actual.Sig != null && !actual.Dato.Id.Equals(id))
+            {
+                anteriror = actual;
+                actual = actual.Sig;
+            }
+
+            anteriror.Sig = actual.Sig;
+            return actual.Dato;
+        }
+
         public IEnumerable<T> ObtenerTodo()
         {
             Nodo<T> actual = Primero;
