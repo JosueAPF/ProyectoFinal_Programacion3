@@ -23,9 +23,16 @@ namespace Proyecto_Final.Servicio
 
         }
 
-        public void AgregarTarjeta(Tarjeta tarjeta)
+        public bool AgregarTarjeta(Tarjeta tarjeta)
         {
             //agregando a las lista de el Modelo Clinetes
+            var clientesaabb = ContextoEstructuras.abblClientes.Buscar(tarjeta.IdCliente);
+            var clienteHash = ContextoEstructuras.tablaClientes.BuscarTabla(tarjeta.IdCliente);
+
+            if (clienteHash == null && clientesaabb == null) {
+                return false;
+            }
+
             foreach (var item in ContextoEstructuras.abblClientes.ObtenerTodo())
             {
                 if (item.Id == tarjeta.IdCliente)
@@ -46,9 +53,32 @@ namespace Proyecto_Final.Servicio
 
 
             ContextoEstructuras.colaTarjetas.Encolar(tarjeta);
+            return true;
         }
 
+        /*Eliminar x Numero de tarjeta*/
+        public string EliminarTarjeta(string numeroTarjeata) {
+            var buscarTxID = BuscarTarjetaxNumero(numeroTarjeata);
+            if (buscarTxID == null) {
+                return $"la Tarjeta {buscarTxID}, no Existe!";
+            }
 
+            var NumeroTarjeta = buscarTxID.Numero;
+
+            if (NumeroTarjeta == null) {
+                return $"el Numero de  Tarjeta {buscarTxID.Numero}, no Existe!";    
+            }
+            var tarjeta = ContextoEstructuras.colaTarjetas.Desencolar_TipoLista(buscarTxID.Id);
+            ContextoEstructuras.AvlTarjetasElim.Insertar(buscarTxID);
+            return $"Eliminado con Exito, {tarjeta.Numero}";
+        }
+        //tarjetas eliminadas   
+        public IEnumerable<Tarjeta> verTarjetasEliminadas()
+        {
+            return ContextoEstructuras.AvlTarjetasElim.ObtenerTodo();
+
+
+        }
 
         /*Busqueda Por Id*/
         public string BuscarTarjetaxId(string id)
@@ -59,6 +89,7 @@ namespace Proyecto_Final.Servicio
         /*Busqueda por Numero de Tarjeta*/
         public Tarjeta BuscarTarjetaxNumero(string nume)
         {
+            //iterando la cola con forEach gracias al IEnumerable<T>
             var tarjetas = ContextoEstructuras.colaTarjetas.ObtenerTodo();
             Tarjeta tarjeta = null;
             foreach (var item in tarjetas)
@@ -221,15 +252,26 @@ namespace Proyecto_Final.Servicio
             {
                 if (item.Tipo == TipoTransaccion.Pago)
                 {
-
-                    ContextoEstructuras.ListaPagos.Enlistar(item);
+                    if (tarjeta.Numero.Equals(item.Numero))
+                    {
+                        ContextoEstructuras.ListaPagos.Enlistar(item);
+                    }
+                    else {
+                        return;
+                    }
 
                 }
 
                 if (item.Tipo == TipoTransaccion.Compra)
                 {
-
-                    ContextoEstructuras.ListaCompras.Enlistar(item);
+                    if (tarjeta.Numero.Equals(item.Numero))
+                    {
+                        ContextoEstructuras.ListaCompras.Enlistar(item);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
 

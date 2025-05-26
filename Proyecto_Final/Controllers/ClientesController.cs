@@ -103,15 +103,6 @@ namespace Proyecto_Final.Controllers
             return Ok(clientes);
         }
 
-        /*
-        [HttpGet("ObtenerTodo")]
-        public ActionResult<IEnumerable<Clientes>>  ObtenerTodo() {
-            var cliTar = clientServicio.ObtenerCliente_Tarjeta();
-            return Ok(cliTar);
-        
-        }*/
-
-
         [HttpPut("ModificarNombre/{id}")]
         public ActionResult<Clientes> ModificarCliente(string id, [FromBody] ClienteDTO_ModificarNombre nuevoCliente)
         {

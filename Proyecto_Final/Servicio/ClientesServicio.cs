@@ -9,10 +9,12 @@ namespace Proyecto_Final.Servicio
     {
 
         public ContextDatos ContextoEstructura { get; set; }
+        public TarjetaServicio tarServicio { get; set; }
 
-        public ClientesServicio(ContextDatos contexto)
+        public ClientesServicio(ContextDatos contexto, TarjetaServicio servicioTar)
         {
             ContextoEstructura = contexto;
+            tarServicio = servicioTar;
         }
 
         public void AgregarClientes(Clientes cliente)
@@ -26,7 +28,7 @@ namespace Proyecto_Final.Servicio
             return ContextoEstructura.abblClientes.ObtenerTodo();
 
         }
-        
+
 
         public string BuscarCliente(string id)
         {
@@ -79,10 +81,40 @@ namespace Proyecto_Final.Servicio
 
             var BuscandoClinetElim = ContextoEstructura.abblClientes.Buscar(Id);
 
+
             if (BuscandoClinetElim == null)
             {
                 return false;
             }
+
+            tarServicio.EliminarTarjeta(BuscandoClinetElim.Dato.Id);
+
+            Clientes cliente = BuscandoClinetElim.Dato;
+            if (cliente == null) { 
+                return false; 
+            }
+
+            // Eliminar tarjetas asociadas del cliente en colaTarjetas
+            var tarjetas = ContextoEstructura.colaTarjetas.ObtenerTodo();
+            List<string> tarjetasAEliminar = new List<string>();//cambiar por una estructura aceptada
+            
+            //recorremos tarjetasa asociadas a los clientes existentes
+            foreach (var tarjeta in tarjetas)
+            {
+                if (tarjeta.IdCliente == cliente.Id)
+                {
+                    tarjetasAEliminar.Add(tarjeta.Id);
+                    ContextoEstructura.AvlTarjetasElim.Insertar(tarjeta);
+                }
+            }
+
+            foreach (var idTarjeta in tarjetasAEliminar)
+            {
+                ContextoEstructura.colaTarjetas.Desencolar_TipoLista(idTarjeta);
+            }
+
+
+
 
             ContextoEstructura.abblClientes.Eliminar(BuscandoClinetElim.Dato);
             ContextoEstructura.tablaClientes.Eliminar(BuscandoClinetElim.Dato.Id);
@@ -90,6 +122,8 @@ namespace Proyecto_Final.Servicio
             //eliminado 
             return true;
         }
+
+        
 
 
     }

@@ -304,6 +304,32 @@
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "ElimnarTarjeta",
+    "RelativePath": "api/Tarjetas/EliminarTarjeta/{numeroTarjeta}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTarjeta",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "HistorialLimites",
     "RelativePath": "api/Tarjetas/HistorialLimites/{numeroTarjeta}",
     "HttpMethod": "GET",
@@ -397,6 +423,26 @@
     "ReturnTypes": [
       {
         "Type": "Models.Tarjeta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
+    "Method": "TarjetasEliminadas",
+    "RelativePath": "api/Tarjetas/TarjetasEliminadas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Models.Tarjeta, Proyecto_Final, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

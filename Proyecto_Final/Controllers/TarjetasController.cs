@@ -31,7 +31,10 @@ namespace Proyecto_Final.Controllers
                 idCliente: tarjeta.IdCliente
             );
 
-            tarjetaServicio.AgregarTarjeta(tarjetaNueva);
+            var addTarjeta = tarjetaServicio.AgregarTarjeta(tarjetaNueva);
+            if (!addTarjeta) {
+                return BadRequest("Error Cliente no existe!");
+            }
             return CreatedAtAction(nameof(ObtenerTarjetaxId), new { id = tarjeta.Id }, tarjetaNueva);
 
         }
@@ -56,6 +59,17 @@ namespace Proyecto_Final.Controllers
         public ActionResult<IEnumerable<Tarjeta>> OtenerTarjetas()
         {
             return  Ok(tarjetaServicio.ObtenerTarjetas());
+        }
+
+        [HttpDelete("EliminarTarjeta/{numeroTarjeta}")]
+        public ActionResult<string> ElimnarTarjeta(string numeroTarjeta) {
+            return Ok(tarjetaServicio.EliminarTarjeta(numeroTarjeta));
+        }
+
+        [HttpGet("TarjetasEliminadas")]
+        public ActionResult<IEnumerable<Tarjeta>> TarjetasEliminadas()
+        {
+            return Ok(tarjetaServicio.verTarjetasEliminadas());
         }
 
         [HttpGet("verSaldo/{numeroTarjeta}")]

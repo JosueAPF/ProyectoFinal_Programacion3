@@ -75,7 +75,7 @@ namespace Proyecto_Final.Servicio
             }
             if (tarjetaEncontrada == null)
             {
-                return false;
+                return true;
             }
            
 

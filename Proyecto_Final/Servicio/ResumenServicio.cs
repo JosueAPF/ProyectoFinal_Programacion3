@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models;
 using Proyecto_Final.ArmadoEstructuras;
 
 namespace Proyecto_Final.Servicio
@@ -7,23 +9,28 @@ namespace Proyecto_Final.Servicio
     {
 
         public ContextDatos contexto { get; set; }
+        public TarjetaServicio tarjetaservico { get; set; }
 
-        public ResumenServicio(ContextDatos servicio)
+        public ResumenServicio(ContextDatos servicio, TarjetaServicio tarjetaservico)
         {
             contexto = servicio;
+            this.tarjetaservico = tarjetaservico;
         }
 
         public string ResumenCliente(string idCliente)
         {
             var nodo = contexto.tablaClientes.BuscarTabla(idCliente);
-            if (nodo == null) {
+            if (nodo == null)
+            {
                 return "Cliente no encontrado!";
             }
             var cliente = nodo.Dato;
 
-            
+
 
             StringBuilder resumen = new StringBuilder();
+            StringBuilder resumenP = new StringBuilder();
+            StringBuilder resumenC = new StringBuilder();
             resumen.AppendLine($"Resumen del Cliente: {cliente.Name} (DPI: {cliente.DPI})\n");
 
             if (cliente.tarjetas.Count == 0)
@@ -54,40 +61,56 @@ namespace Proyecto_Final.Servicio
                         .AppendLine("\n");
 
                 }
-
-
                 //transacciones no funciona
-                foreach (var pagos in contexto.ListaPagos.ObtenerTodo())
+                var misPagos = tarjetaservico.verPagos(tarjeta.Numero);
+                foreach (var pagos in misPagos)
                 {
-                    if (pagos.Numero.Equals(tarjeta.Numero)) {
-                        if (pagos == null) {
-                            resumen.AppendLine("no hay pagos aun");
-                        }
-                        resumen.AppendLine("---Pagos---")
-                            .AppendLine($"Entidad Bancaria :{pagos.Establecimiento}")
-                            .AppendLine($"Pago Cantidad :{pagos.Monto}")
-                            .AppendLine($"Fecha y Hora :{pagos.FechaTransaccion}");
-                    }
-                }
-
-                foreach (var compras in contexto.ListaCompras.ObtenerTodo())
-                {
-                    if (compras.Numero.Equals(tarjeta.Numero))
+                    if (pagos == null)
                     {
-                        if (compras == null)
-                        {
-                            resumen.AppendLine("no hay pagos aun");
-                        }
-                        resumen.AppendLine("---Pagos---")
-                            .AppendLine($"Entidad Bancaria :{compras.Establecimiento}")
-                            .AppendLine($"Pago Cantidad :{compras.Monto}")
-                            .AppendLine($"Fecha y Hora :{compras.FechaTransaccion}");
+                        resumenP.AppendLine("no hay pagos aun");
+                    }
+                    if (tarjeta.Numero.Equals(pagos.Numero))
+                    {
+                        resumenP.AppendLine("---Pagos---")
+                               .AppendLine($"Entidad Bancaria :{pagos.Establecimiento}")
+                               .AppendLine($"Pago Cantidad :{pagos.Monto}")
+                               .AppendLine($"Fecha y Hora :{pagos.FechaTransaccion}")
+                               .AppendLine($"Con Tarjeta :{pagos.Numero}");
+                    }
+                    else
+                    {
+                        resumenP.AppendLine("");
+                    }
+
+                }
+
+                var misCompras = tarjetaservico.verCompras(tarjeta.Numero);
+                foreach (var compras in misCompras)
+                {
+                    if (compras == null)
+                    {
+                        resumenC.AppendLine("no hay Copras aun");
+                    }
+                    if (tarjeta.Numero.Equals(compras.Numero))
+                    {
+                        resumenC.AppendLine("---Compras---")
+                        .AppendLine($"Establecimiento  :{compras.Establecimiento}")
+                        .AppendLine($"Cantidad :{compras.Monto}")
+                        .AppendLine($"Fecha y Hora :{compras.FechaTransaccion}")
+                        .AppendLine($"Con Tarjeta :{compras.Numero}");
+                    }
+                    else
+                    {
+                        resumenC.AppendLine("");
                     }
                 }
+
+
             }
+                resumen.AppendLine("-----------------------");
 
 
-            return resumen.ToString();
+            return resumen.AppendLine(resumenP.ToString()).AppendLine(resumenC.ToString()).ToString();
         }
 
     }

@@ -13,6 +13,9 @@ namespace Proyecto_Final.ArmadoEstructuras
         public Cola<Clientes> colaClientes { get; set; }
         public Cola<Tarjeta> colaTarjetas { get; set; }
 
+        //AVl de Tarjetas Eliminadas
+        public AVl<Tarjeta> AvlTarjetasElim { get; set; }
+
 
         /// La tabla Hash
         public TablaHash<Clientes> tablaClientes { get; set; }
@@ -51,10 +54,12 @@ namespace Proyecto_Final.ArmadoEstructuras
             ListaPagos = new ListaE_Simple<Transaccion>();
             ListaCompras = new ListaE_Simple<Transaccion>();
 
+            /*tarjetas Eliminadas*/
+            AvlTarjetasElim = new AVl<Tarjeta>(); 
 
 
-            /*Tabla hassh + Lista Enlazada simple*/
-            tablaClientes = new TablaHash<Clientes>();
+        /*Tabla hassh + Lista Enlazada simple*/
+        tablaClientes = new TablaHash<Clientes>();
 
             /*arboles*/
             abblClientes = new ABB<Clientes>();
