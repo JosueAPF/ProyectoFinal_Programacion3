@@ -23,7 +23,7 @@ namespace Proyecto_Final.Servicio
                 return false;
             }
 
-            // Como sí existe el cliente, lo agrego al AVL
+            // existe!!!!
             ContextoEstructuras.avlClientesLogin.Insertar(verificarCliente.Dato);
             return true;
         }
@@ -33,7 +33,7 @@ namespace Proyecto_Final.Servicio
         {
             return ContextoEstructuras.avlClientesLogin.ObtenerTodo();
         }
-
+         
         public bool deslogearUsuario(string cliId)
         {
             

@@ -15,7 +15,7 @@ namespace Proyecto_Final.Controllers
         public TarjetaServicio tarjetaServicio { get; set; }
 
         public ResumenServicio resServicio { get; set; }
-  
+
 
         public ServicioUsuariosActivos servicioUsuariosActivos { get; set; }
         public ClientesController(ClientesServicio servicio, TarjetaServicio tarjetaServicio, ServicioUsuariosActivos activos, ResumenServicio resServicio)
@@ -31,43 +31,51 @@ namespace Proyecto_Final.Controllers
             var login = servicioUsuariosActivos.loginUsuario(clienteId);
             if (login == false)
             {
-                return NotFound();
+                return NotFound("Cliente Inexistente");
             }
             return Ok(login);
         }
         [HttpGet("Clientes_Activos")]
-        public ActionResult<IEnumerable<Clientes>> ClientesLoggeados() {
-
-            return Ok(servicioUsuariosActivos.ObtenerUsuariosActivos());
+        public ActionResult<IEnumerable<Clientes>> ClientesLoggeados()
+        {
+            var listadoActivos = servicioUsuariosActivos.ObtenerUsuariosActivos();
+            return Ok(listadoActivos);
         }
 
-        [HttpGet("Logout/{idcliente}")]
-        public ActionResult<bool> Logout(string idcliente)
+        [HttpDelete("Logout/{clienteId}")]
+        public ActionResult<bool> Logout(string clienteId)
         {
-            var logout = servicioUsuariosActivos.deslogearUsuario(idcliente);
+            var logout = servicioUsuariosActivos.deslogearUsuario(clienteId);
             if (logout == false)
             {
-                return NotFound();
+                return NotFound("Cliente Inexistente");
             }
             return Ok(logout);
-        }   
+        }
 
         [HttpPost("nuevoClientes")]
-        public void NuevoCliente([FromBody] ClienteDTO_Escritura cliDTO)
+        public ActionResult NuevoCliente([FromBody] ClienteDTO_Escritura cliDTO)
         {
             var cli = new Clientes(cliDTO.Id, cliDTO.Name, cliDTO.DPI);
             clientServicio.AgregarClientes(cli);
+            return Created();//creado Exitosamente :)
         }
 
         [HttpPost("nuevoClienteTarjeta")]
         public ActionResult NuevoClienteTarjeta([FromBody] ClienteDTO_Lectura cliDTO)
         {
+
+            // Validación: Asegurarse de que solo hay una tarjeta
+            if (cliDTO.Tarjetas == null || cliDTO.Tarjetas.Count != 1)
+            {
+                return BadRequest("Debe proporcionar exactamente una tarjeta.");
+            }
+
             var cli = new Clientes(cliDTO.Id, cliDTO.Name, cliDTO.DPI);
             clientServicio.AgregarClientes(cli);
-
-            foreach (var tDto in cliDTO.Tarjetas)
-            {
-                var tarjeta = new Tarjeta(
+           
+            var tDto = cliDTO.Tarjetas.First();
+            Tarjeta tarjeta = new Tarjeta(
                 id: tDto.Id,
                 numero: tDto.Numero,
                 fechaExpiracion: tDto.FechaExpiracion,
@@ -77,24 +85,23 @@ namespace Proyecto_Final.Controllers
                 limiteCredito: tDto.LimiteCredito,
                 estaBloqueada: false,
                 idCliente: cli.Id
-            );
+                );
+            clientServicio.agregarTarjeta(tarjeta);
 
-                tarjetaServicio.AgregarTarjeta(tarjeta);
-                clientServicio.agregarTarjeta(tarjeta);
-            }
-            return CreatedAtAction(nameof(ObtenerC),new { id = cli.Id },cli);
+            return CreatedAtAction(nameof(ObtenerC),new { clienteId = cli.Id },cli);
         }
-        [HttpGet("BuscarCliente/{id}")]
-        public ActionResult<Clientes> ObtenerC(string id)
+
+        [HttpGet("BuscarCliente/{clienteId}")]
+        public ActionResult<Clientes> ObtenerC(string clienteId)
         {
-            var cli = clientServicio.BuscarCliente(id);
+            var cli = clientServicio.BuscarCliente(clienteId);
             if (cli == null)
             {
-                return NotFound("Ese Cliente No Existe !");
+                return NotFound($"Posiblemente, {clienteId} El Cliente No Exista!");
             }
             return Ok(cli);
         }
-        
+
 
         [HttpGet("VerClientes")]
         public ActionResult<IEnumerable<Clientes>> ObtenerCliente()
@@ -103,32 +110,40 @@ namespace Proyecto_Final.Controllers
             return Ok(clientes);
         }
 
-        [HttpPut("ModificarNombre/{id}")]
-        public ActionResult<Clientes> ModificarCliente(string id, [FromBody] ClienteDTO_ModificarNombre nuevoCliente)
+        [HttpPut("ModificarNombre/{clienteId}")]
+        public ActionResult<Clientes> ModificarCliente(string clienteId, [FromBody] ClienteDTO_ModificarNombre nuevoCliente)
         {
-           var micliente = clientServicio.ModificarNombre(id, nuevoCliente);
-            if (micliente == null) {
+            var micliente = clientServicio.ModificarNombre(clienteId, nuevoCliente);
+            if (micliente == null)
+            {
 
-                return NotFound("Posiblemente El Cliente No Exista!");
+                return NotFound($"Posiblemente, {clienteId} El Cliente No Exista!");
             }
             return Ok(micliente);
         }
 
-        [HttpDelete("EliminarCliente/{id}")]
-        public ActionResult<string> EliminarCliente(string id)
+        [HttpDelete("EliminarCliente/{clienteId}")]
+        public ActionResult<string> EliminarCliente(string clienteId)
         {
-            var eliminar = clientServicio.ElimnarCliente(id);
-            if (!eliminar) {
-                return NotFound("Posiblemente El Cliente No Exista!");
+            var eliminar = clientServicio.ElimnarCliente(clienteId);
+            if (!eliminar)
+            {
+                return NotFound($"Posiblemente, {clienteId} El Cliente No Exista!");
             }
             return Ok(eliminar);
         }
 
-        [HttpGet("Resumen/{id}")]
-        public ActionResult verResumenCliente(string id) {
-            var resumen = resServicio.ResumenCliente(id);    
-            return Ok(resumen);
-        
+        [HttpGet("Resumen/{clienteId}")]
+        public ActionResult verResumenCliente(string clienteId)
+        {
+            var resumen = resServicio.ResumenCliente(clienteId);
+            var Existencia = clientServicio.BuscarCliente(clienteId);
+            if (Existencia != null)
+            {
+                return Ok(resumen);
+            }
+            return NotFound($"{clienteId} Inexistente!, el Clienet no Existe");
+
         }
     }
 }

@@ -2,13 +2,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "ObtenerC",
-    "RelativePath": "api/Clientes/BuscarCliente/{id}",
+    "RelativePath": "api/Clientes/BuscarCliente/{clienteId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "clienteId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -48,13 +48,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "EliminarCliente",
-    "RelativePath": "api/Clientes/EliminarCliente/{id}",
+    "RelativePath": "api/Clientes/EliminarCliente/{clienteId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "clienteId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -100,13 +100,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "Logout",
-    "RelativePath": "api/Clientes/Logout/{idcliente}",
-    "HttpMethod": "GET",
+    "RelativePath": "api/Clientes/Logout/{clienteId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idcliente",
+        "Name": "clienteId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -126,13 +126,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "ModificarCliente",
-    "RelativePath": "api/Clientes/ModificarNombre/{id}",
+    "RelativePath": "api/Clientes/ModificarNombre/{clienteId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "clienteId",
         "Type": "System.String",
         "IsRequired": true
       },
@@ -168,13 +168,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
@@ -195,13 +189,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.ClientesController",
     "Method": "verResumenCliente",
-    "RelativePath": "api/Clientes/Resumen/{id}",
+    "RelativePath": "api/Clientes/Resumen/{clienteId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "clienteId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -258,7 +252,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "numTarjeta",
+        "Name": "numeroTarjeta",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -383,13 +377,13 @@
   {
     "ContainingType": "Proyecto_Final.Controllers.TarjetasController",
     "Method": "ObtenerTarjetaxId",
-    "RelativePath": "api/Tarjetas/ObtnerTarjetaxId{id}",
+    "RelativePath": "api/Tarjetas/ObtnerTarjetaxId/{idTarjeta}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idTarjeta",
         "Type": "System.String",
         "IsRequired": true
       }

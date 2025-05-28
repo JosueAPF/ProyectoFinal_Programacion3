@@ -77,10 +77,12 @@ namespace Proyecto_Final.Servicio
             {
                 return true;
             }
-           
+
 
             /******************Tipo de Transcciones******************/
 
+
+            /**pago**/
             if (trx.Tipo == TipoTransaccion.Pago)
             {
                 if (trx.Monto < 0) {
@@ -102,6 +104,9 @@ namespace Proyecto_Final.Servicio
                     tarjetaEncontrada.IsBlocked = false;
                 }
             }
+
+
+            /**Compra**/
             if (trx.Tipo == TipoTransaccion.Compra)
             {
                 if (tarjetaEncontrada.IsBlocked)

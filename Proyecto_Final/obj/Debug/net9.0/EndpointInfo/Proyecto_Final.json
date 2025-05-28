@@ -83,14 +83,14 @@
         }
       }
     },
-    "/api/Clientes/Logout/{idcliente}": {
-      "get": {
+    "/api/Clientes/Logout/{clienteId}": {
+      "delete": {
         "tags": [
           "Clientes"
         ],
         "parameters": [
           {
-            "name": "idcliente",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -184,14 +184,14 @@
         }
       }
     },
-    "/api/Clientes/BuscarCliente/{id}": {
+    "/api/Clientes/BuscarCliente/{clienteId}": {
       "get": {
         "tags": [
           "Clientes"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -261,14 +261,14 @@
         }
       }
     },
-    "/api/Clientes/ModificarNombre/{id}": {
+    "/api/Clientes/ModificarNombre/{clienteId}": {
       "put": {
         "tags": [
           "Clientes"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -319,14 +319,14 @@
         }
       }
     },
-    "/api/Clientes/EliminarCliente/{id}": {
+    "/api/Clientes/EliminarCliente/{clienteId}": {
       "delete": {
         "tags": [
           "Clientes"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -358,14 +358,14 @@
         }
       }
     },
-    "/api/Clientes/Resumen/{id}": {
+    "/api/Clientes/Resumen/{clienteId}": {
       "get": {
         "tags": [
           "Clientes"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -428,14 +428,14 @@
         }
       }
     },
-    "/api/Tarjetas/ObtnerTarjetaxId{id}": {
+    "/api/Tarjetas/ObtnerTarjetaxId/{idTarjeta}": {
       "get": {
         "tags": [
           "Tarjetas"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idTarjeta",
             "in": "path",
             "required": true,
             "schema": {
@@ -711,7 +711,7 @@
         ],
         "parameters": [
           {
-            "name": "numTarjeta",
+            "name": "numeroTarjeta",
             "in": "query",
             "schema": {
               "type": "string"

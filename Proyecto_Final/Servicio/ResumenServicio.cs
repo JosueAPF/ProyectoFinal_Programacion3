@@ -50,6 +50,7 @@ namespace Proyecto_Final.Servicio
                     decimal limite = tarjeta.LimiteCredito;
                     decimal disponibl = limite - deuda;
                     bool bloqueada = tarjeta.IsBlocked;
+                    var trx = tarjeta.Transacciones;
 
 
 
@@ -60,54 +61,45 @@ namespace Proyecto_Final.Servicio
                         .AppendLine($"Se encuentra Bloqueada :{bloqueada}")
                         .AppendLine("\n");
 
-                }
-                //transacciones no funciona
-                var misPagos = tarjetaservico.verPagos(tarjeta.Numero);
-                foreach (var pagos in misPagos)
-                {
-                    if (pagos == null)
+                    //pagos
+                    foreach (var trans in trx)
                     {
-                        resumenP.AppendLine("no hay pagos aun");
-                    }
-                    if (tarjeta.Numero.Equals(pagos.Numero))
-                    {
-                        resumenP.AppendLine("---Pagos---")
-                               .AppendLine($"Entidad Bancaria :{pagos.Establecimiento}")
-                               .AppendLine($"Pago Cantidad :{pagos.Monto}")
-                               .AppendLine($"Fecha y Hora :{pagos.FechaTransaccion}")
-                               .AppendLine($"Con Tarjeta :{pagos.Numero}");
-                    }
-                    else
-                    {
-                        resumenP.AppendLine("");
+                        if (trans == null)
+                        {
+                            resumen.AppendLine("No cuenta con pagos aun");
+                        }
+                        if (trans?.Tipo == TipoTransaccion.Pago)
+                        {
+                            resumenC.AppendLine("---Pago---")
+                            .AppendLine($"Establecimiento  :{trans.Establecimiento.Nombre}")
+                            .AppendLine($"Cantidad :{trans.Monto}")
+                            .AppendLine($"Fecha y Hora :{trans.FechaTransaccion}")
+                            .AppendLine($"Con Tarjeta :{trans.Numero}")
+                            .AppendLine("\n");
+                        }
                     }
 
-                }
-
-                var misCompras = tarjetaservico.verCompras(tarjeta.Numero);
-                foreach (var compras in misCompras)
-                {
-                    if (compras == null)
+                    //compras
+                    foreach (var trans in trx)
                     {
-                        resumenC.AppendLine("no hay Copras aun");
-                    }
-                    if (tarjeta.Numero.Equals(compras.Numero))
-                    {
-                        resumenC.AppendLine("---Compras---")
-                        .AppendLine($"Establecimiento  :{compras.Establecimiento}")
-                        .AppendLine($"Cantidad :{compras.Monto}")
-                        .AppendLine($"Fecha y Hora :{compras.FechaTransaccion}")
-                        .AppendLine($"Con Tarjeta :{compras.Numero}");
-                    }
-                    else
-                    {
-                        resumenC.AppendLine("");
+                        if (trans == null)
+                        {
+                            resumen.AppendLine("No se han Aprobado, o no existen registro aun");
+                        }
+                        if (trans?.Tipo == TipoTransaccion.Compra)
+                        {
+                            resumenC.AppendLine("---Compras---")
+                            .AppendLine($"Establecimiento  :{trans.Establecimiento.Nombre}")
+                            .AppendLine($"Cantidad :{trans.Monto}")
+                            .AppendLine($"Fecha y Hora :{trans.FechaTransaccion}")
+                            .AppendLine($"Con Tarjeta :{trans.Numero}")
+                            .AppendLine("\n");
+                        }
                     }
                 }
-
 
             }
-                resumen.AppendLine("-----------------------");
+            resumen.AppendLine("----------Transacciones-------------");
 
 
             return resumen.AppendLine(resumenP.ToString()).AppendLine(resumenC.ToString()).ToString();

@@ -9,6 +9,7 @@ namespace Proyecto_Final.Servicio
     {
 
         public ContextDatos ContextoEstructura { get; set; }
+   
         public TarjetaServicio tarServicio { get; set; }
 
         public ClientesServicio(ContextDatos contexto, TarjetaServicio servicioTar)
@@ -64,13 +65,7 @@ namespace Proyecto_Final.Servicio
         }
         public void agregarTarjeta(Tarjeta tarjeta)
         {
-            foreach (var item in ContextoEstructura.abblClientes.ObtenerTodo())
-            {
-                if (item.Id == tarjeta.IdCliente)
-                {
-                    item.AgregarTarjeta(tarjeta);
-                }
-            }
+            tarServicio.AgregarTarjeta(tarjeta);
         }
         public bool ElimnarCliente(string Id)
         {

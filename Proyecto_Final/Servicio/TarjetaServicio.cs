@@ -26,6 +26,7 @@ namespace Proyecto_Final.Servicio
         public bool AgregarTarjeta(Tarjeta tarjeta)
         {
             //agregando a las lista de el Modelo Clinetes
+            
             var clientesaabb = ContextoEstructuras.abblClientes.Buscar(tarjeta.IdCliente);
             var clienteHash = ContextoEstructuras.tablaClientes.BuscarTabla(tarjeta.IdCliente);
 
@@ -35,23 +36,13 @@ namespace Proyecto_Final.Servicio
 
             foreach (var item in ContextoEstructuras.abblClientes.ObtenerTodo())
             {
+                //verificar que se cumpla El Cliente.id cliente de ser igual a tarjeta.IdCliente
                 if (item.Id == tarjeta.IdCliente)
-                {
+                {   
                     item.AgregarTarjeta(tarjeta);
                 }
                 
             }
-            //agregando a las lista de el Modelo Clinetes
-            foreach (var item in ContextoEstructuras.tablaClientes.ObtenerTodo())
-            {
-                if (item.Id == tarjeta.IdCliente)
-                {
-                    item.AgregarTarjeta(tarjeta);
-                }
-               
-            }
-
-
             ContextoEstructuras.colaTarjetas.Encolar(tarjeta);
             return true;
         }
@@ -81,9 +72,20 @@ namespace Proyecto_Final.Servicio
         }
 
         /*Busqueda Por Id*/
-        public string BuscarTarjetaxId(string id)
+        public Tarjeta BuscarTarjetaxId(string id)
         {
-            return ContextoEstructuras.colaTarjetas.Buscar(id);
+            var tarjetas = ContextoEstructuras.colaTarjetas.ObtenerTodo();
+            Tarjeta tarjeta = null;
+            foreach (var item in tarjetas)
+            {
+                if (item.Id == id)
+                {
+                    tarjeta = item;
+                }
+            }
+           
+
+            return tarjeta;
         }
 
         /*Busqueda por Numero de Tarjeta*/
@@ -122,12 +124,16 @@ namespace Proyecto_Final.Servicio
         public string AumentoLimite(string numeroTarjeta, decimal nuevoLimite)
         {
             var tarjeta = BuscarTarjetaxNumero(numeroTarjeta);
-            decimal LimitesPermitidos = tarjeta.LimiteCredito * 2m; //no mayores a 2 limites de credito
-
             if (tarjeta == null)
             {
                 return "Tarjeta No Encontrada!";
             }
+
+            decimal LimitesPermitidos = tarjeta.LimiteCredito * 2m; //no mayores a 2 limites de credito
+            if (LimitesPermitidos == null) {
+                return "Error El Id no existe o dejo en Cero la casilla";
+            }
+
 
 
             if (nuevoLimite < tarjeta.LimiteCredito)

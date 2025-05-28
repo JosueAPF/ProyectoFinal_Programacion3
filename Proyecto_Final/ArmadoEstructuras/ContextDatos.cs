@@ -58,20 +58,15 @@ namespace Proyecto_Final.ArmadoEstructuras
             AvlTarjetasElim = new AVl<Tarjeta>(); 
 
 
-        /*Tabla hassh + Lista Enlazada simple*/
-        tablaClientes = new TablaHash<Clientes>();
+            /*Tabla hassh + Lista Enlazada simple*/
+            tablaClientes = new TablaHash<Clientes>();
 
             /*arboles*/
             abblClientes = new ABB<Clientes>();
             avlClientesLogin = new AVl<Clientes>();
-
             ColaTransacciones = new Cola<Transaccion>();
 
-            /***a sus respectivas estructuras de datos***/
-            //esta parte es apra probar funcionalidades se debe eliminar
-            //llenado-Clientes
-            foreach (var c in clientesDes.Lectura("Clientes.json"))
-                colaClientes.Encolar(c);
+           
             //llenado-Tajetas
             foreach (var t in tarjetasDes.Lectura("Tarjetas.json"))
                 colaTarjetas.Encolar(t);
@@ -86,6 +81,13 @@ namespace Proyecto_Final.ArmadoEstructuras
                 abblClientes.Insertar(item);
 
             }
+            //AVL-clientes Loggin-Logout
+            /*foreach (var item in clientesDes.Lectura("Clientes.json"))
+            {
+                avlClientesLogin.Insertar(item);
+
+            }*/
+
 
             /* ABB Y Cola *///incolucrado Tambien pila<transacciones> pero en el servicio
             //Transacciones:Datos iniciales
@@ -97,7 +99,7 @@ namespace Proyecto_Final.ArmadoEstructuras
             }
 
 
-            /*Tabla Hash*/
+            /*Tabla Hash-Resumen para Clinetes tarjetas transacciones*/
 
             foreach (var item in clientesDes.Lectura("Clientes.json"))
             {
@@ -111,37 +113,6 @@ namespace Proyecto_Final.ArmadoEstructuras
                     buscandoCli.Dato.tarjetas.Add(t);   
                 }
             }
-
-
-
-            /*
-            foreach (var t in colaTarjetas.ObtenerTodo())
-            {
-                foreach (var trx in ColaTransacciones.ObtenerTodo())
-                {
-                    if (t.Numero.Equals(trx.Numero))
-                    {
-                        
-                    }
-
-                }
-            }*/
-
-
-
-
-
-
-
-
-
-                //
-
-
-
-
-
-
 
 
 

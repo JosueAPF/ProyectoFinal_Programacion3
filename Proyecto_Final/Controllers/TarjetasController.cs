@@ -32,26 +32,34 @@ namespace Proyecto_Final.Controllers
             );
 
             var addTarjeta = tarjetaServicio.AgregarTarjeta(tarjetaNueva);
+            
             if (!addTarjeta) {
-                return BadRequest("Error Cliente no existe!");
+                return BadRequest($"Error Cliente {tarjeta.IdCliente} no existe!");
             }
-            return CreatedAtAction(nameof(ObtenerTarjetaxId), new { id = tarjeta.Id }, tarjetaNueva);
+
+            return Created();
 
         }
-        [HttpGet("ObtnerTarjetaxId{id}")]
-        public  ActionResult<Tarjeta> ObtenerTarjetaxId(string id)
+        
+        [HttpGet("ObtnerTarjetaxId/{idTarjeta}")]
+        public  ActionResult<Tarjeta> ObtenerTarjetaxId(string idTarjeta)
         {
-            var c = tarjetaServicio.BuscarTarjetaxId(id);
-            if (c == null) { return NotFound(); }
-            return Ok(c);
+            var tar = tarjetaServicio.BuscarTarjetaxId(idTarjeta);
+
+            if (tar == null) {
+                    return NotFound($"Esa Tarjeta no Existe {idTarjeta}"); 
+            }
+           return Ok(tar);
         }
 
         [HttpGet("ObtnerTarjetaxNumero{numeroTarjeta}")]
         public ActionResult<Tarjeta> ObtenerTarjetaxNumero(string numeroTarjeta)
         {
-            var c = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
-            if (c == null) { return NotFound(); }
-            return Ok(c);
+            var tar = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            if (tar == null) { 
+                return NotFound($"Esa Tarjeta no Existe {numeroTarjeta}"); 
+            }
+            return Ok(tar);
         }
 
 
@@ -63,7 +71,13 @@ namespace Proyecto_Final.Controllers
 
         [HttpDelete("EliminarTarjeta/{numeroTarjeta}")]
         public ActionResult<string> ElimnarTarjeta(string numeroTarjeta) {
-            return Ok(tarjetaServicio.EliminarTarjeta(numeroTarjeta));
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            
+            if (existencia != null) { 
+                return Ok(tarjetaServicio.EliminarTarjeta(numeroTarjeta));
+            
+            }
+            return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
         }
 
         [HttpGet("TarjetasEliminadas")]
@@ -75,49 +89,63 @@ namespace Proyecto_Final.Controllers
         [HttpGet("verSaldo/{numeroTarjeta}")]
         public ActionResult<string> VerBalance(string numeroTarjeta)
         {
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
             var tarjeta = tarjetaServicio.SaldoDisponible(numeroTarjeta);
-            return Ok(tarjeta);
+            if (existencia != null) { 
+                return Ok(tarjeta);
+            
+            }
+
+            return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
 
         }
 
         [HttpPut("cambiarPin/{numeroTarjeta}")]
         public ActionResult CambiarPin(string numeroTarjeta, [FromBody] int nuevoPin)
         {
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            var tarjeta = tarjetaServicio.CabioPin(numeroTarjeta, nuevoPin);
+            if (existencia != null)
+            {
+                return Ok(tarjeta);
 
-            var tarjeta = tarjetaServicio.CabioPin(numeroTarjeta, nuevoPin);   
-            return Ok(tarjeta);
+            }
+            return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!"); 
         }
 
         [HttpPut("BloquearTarjeta")]
-        public ActionResult BloquearTarjeta(string numTarjeta) {
-            var tarjeta = tarjetaServicio.BloquearTarjeta(numTarjeta);
-            if (tarjeta == null)
+        public ActionResult BloquearTarjeta(string numeroTarjeta) {
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            var bloqueando = tarjetaServicio.BloquearTarjeta(numeroTarjeta);
+            if (existencia == null)
             {
-                return NotFound("No se encuentra Disponible esa tarjeta");
+                return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
             }
 
-            return Ok(tarjeta);
+            return Ok(bloqueando);
         }
 
         [HttpDelete("DesbloquearTarjeta")]
         public ActionResult DesbloquearTarjeta(string numeroTarjeta)
         {
-            var tarjeta = tarjetaServicio.DesbloquearTarjeta(numeroTarjeta);
-            if (tarjeta == null) { 
-                return NotFound("No se encuentra Disponible esa tarjeta"); 
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            var desbloqueando = tarjetaServicio.DesbloquearTarjeta(numeroTarjeta);
+            if (existencia == null) { 
+                return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
             }
-            return Ok(tarjeta);
+            return Ok(desbloqueando);
         }
 
         [HttpPut("aumentoLimite/{numeroTarjeta}")]
         public ActionResult AumentoLimite(string numeroTarjeta, [FromBody] decimal nuevoLimite)
         {
-            var tarjeta = tarjetaServicio.AumentoLimite(numeroTarjeta, nuevoLimite);
-            if (tarjeta == null)
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            var aumento = tarjetaServicio.AumentoLimite(numeroTarjeta, nuevoLimite);
+            if (existencia == null)
             {
-                return NotFound("No se encuentra Disponible esa tarjeta");
+                return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
             }
-            return Ok(tarjeta);
+            return Ok(aumento);
         }
 
         [HttpGet("HistorialLimites/{numeroTarjeta}")]
