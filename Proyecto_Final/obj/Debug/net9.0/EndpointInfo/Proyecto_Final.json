@@ -2,7 +2,7 @@
   "openapi": "3.0.4",
   "info": {
     "title": "Proyecto Final",
-    "description": "API REST para gestión de Tarjetas de Credito",
+    "description": "\r\nAPI REST para gestión de Tarjetas de Crédito\r\n\r\n**Funcionalidades principales:**\r\n\r\n1. Gestión de Clientes      \r\n    - ABB CRUD\r\n    - AVL Login balanceado\r\n    - Tabla Hash Resumen\r\n \r\n\r\n2. Gestión de Tarjetas  y consultas\r\n    - Cola CRUD\r\n    - AVL listado de Eliminados\r\n    - Lista Enlazada\r\n        - listado Pagos\r\n        - listado Compras\r\n\r\n3. Gestion de Transacciones  \r\n    - Cola Pendientes\r\n    - Pila Recientes\r\n    - ABB ver Todo y Busqueda\r\n \r\n",
     "version": "v1"
   },
   "paths": {
@@ -131,17 +131,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Escritura"
+                "$ref": "#/components/schemas/ClienteDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Escritura"
+                "$ref": "#/components/schemas/ClienteDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Escritura"
+                "$ref": "#/components/schemas/ClienteDTO"
               }
             }
           }
@@ -162,17 +162,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Lectura"
+                "$ref": "#/components/schemas/ClienteDTO_Tarjeta"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Lectura"
+                "$ref": "#/components/schemas/ClienteDTO_Tarjeta"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClienteDTO_Lectura"
+                "$ref": "#/components/schemas/ClienteDTO_Tarjeta"
               }
             }
           }
@@ -746,6 +746,28 @@
         }
       }
     },
+    "/api/Tarjetas/Renovacion/{numeroTarjeta}": {
+      "put": {
+        "tags": [
+          "Tarjetas"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTarjeta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Tarjetas/aumentoLimite/{numeroTarjeta}": {
       "put": {
         "tags": [
@@ -1251,7 +1273,7 @@
         },
         "additionalProperties": false
       },
-      "ClienteDTO_Escritura": {
+      "ClienteDTO": {
         "type": "object",
         "properties": {
           "id": {
@@ -1269,7 +1291,17 @@
         },
         "additionalProperties": false
       },
-      "ClienteDTO_Lectura": {
+      "ClienteDTO_ModificarNombre": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClienteDTO_Tarjeta": {
         "type": "object",
         "properties": {
           "id": {
@@ -1289,16 +1321,6 @@
             "items": {
               "$ref": "#/components/schemas/TarjetaDTO_sinTransacciones"
             },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ClienteDTO_ModificarNombre": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
             "nullable": true
           }
         },
@@ -1420,7 +1442,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "balance": {
+          "deuda": {
             "type": "number",
             "format": "double"
           },
@@ -1500,7 +1522,7 @@
             "type": "string",
             "nullable": true
           },
-          "numero": {
+          "nueroTarjeta": {
             "type": "string",
             "nullable": true
           },

@@ -35,12 +35,63 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "Proyecto Final",
         Version = "v1",
-        Description = "API REST para gestión de Tarjetas de Credito"
+        Description = @"
+API REST para gestión de Tarjetas de Crédito
+
+**Funcionalidades principales:**
+
+1. Gestión de Clientes      
+    - ABB CRUD
+    - AVL Login balanceado
+    - Tabla Hash Resumen
+ 
+
+2. Gestión de Tarjetas  y consultas
+    - Cola CRUD
+    - AVL listado de Eliminados
+    - Lista Enlazada
+        - listado Pagos
+        - listado Compras
+
+3. Gestion de Transacciones  
+    - Cola Pendientes
+    - Pila Recientes
+    - ABB ver Todo y Busqueda
+ 
+"
     });
 });
 var app = builder.Build();
 
-// Configurar middleware
+
+// 1) Habilita servir archivos estáticos en wwwroot/
+app.UseStaticFiles();
+
+//var pathOfSwaggerUi = "/swagger-ui";
+// Redirigir la raíz "/" hacia "/swagger"
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cojunto de Apis Clientes-Tarjetas-Transacciones");
+
+        c.RoutePrefix = string.Empty;
+
+
+
+
+
+        c.InjectStylesheet("/swagger-ui/custom.css");
+
+
+
+    });
+}
+
+/*
+
 if (app.Environment.IsDevelopment())
 {
     // Habilitar Swagger
@@ -50,7 +101,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API V1");
-        c.RoutePrefix = "swagger"; 
+        c.RoutePrefix = "swagger";
     });
 }
 
@@ -65,6 +116,18 @@ app.Use(async (context, next) =>
     await next();
 });
 
+
+/*
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        context.Response.Redirect("/swagger");
+        return;
+    }
+    await next();
+});
+*/
 
 
 app.UseHttpsRedirection();

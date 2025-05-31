@@ -12,7 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mi_Progreso\" />
+    <Folder Include="wwwroot\swagger-ui\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\logo-marianoGalvez.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\swagger-ui\custom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

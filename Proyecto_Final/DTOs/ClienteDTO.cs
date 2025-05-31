@@ -2,7 +2,7 @@
 
 namespace Proyecto_Final.DTOs
 {
-    public class ClienteDTO_Escritura
+    public class ClienteDTO
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -1,7 +1,7 @@
 [
     {
         "Id": "TX001",
-        "Numero": "1234567890123456",
+        "NueroTarjeta": "1234567890123456",
         "Tipo": "Compra",
         "Monto": 150.75,
         "FechaTransaccion": "2025-04-10T14:30:00",
@@ -14,7 +14,7 @@
     },
     {
         "Id": "TX002",
-        "Numero": "1234567890123456",
+        "NueroTarjeta": "1234567890123456",
         "Tipo": "Compra",
         "Monto": 300.00,
         "FechaTransaccion": "2025-05-12T17:45:00",
@@ -27,7 +27,7 @@
     },
     {
         "Id": "TX003",
-        "Numero": "9876543210987654",
+        "NueroTarjeta": "9876543210987654",
         "Tipo": "Compra",
         "Monto": 500.00,
         "FechaTransaccion": "2025-05-02T19:20:00",
@@ -40,7 +40,7 @@
     },
     {
         "Id": "TX004",
-        "Numero": "9876543210987654",
+        "NueroTarjeta": "9876543210987654",
         "Tipo": "Compra",
         "Monto": 80.50,
         "FechaTransaccion": "2025-06-10T14:15:00",
@@ -53,7 +53,7 @@
     },
     {
         "Id": "TX005",
-        "Numero": "9876543210987654",
+        "NueroTarjeta": "9876543210987654",
         "Tipo": "Compra",
         "Monto": 120.00,
         "FechaTransaccion": "2025-07-22T11:35:00",
@@ -66,7 +66,7 @@
     },
     {
         "Id": "TX006",
-        "Numero": "4561237896543210",
+        "NueroTarjeta": "4561237896543210",
         "Tipo": "Compra",
         "Monto": 250.50,
         "FechaTransaccion": "2025-06-15T10:45:00",
@@ -79,7 +79,7 @@
     },
     {
         "Id": "TX007",
-        "Numero": "4561237896543210",
+        "NueroTarjeta": "4561237896543210",
         "Tipo": "Compra",
         "Monto": 500.00,
         "FechaTransaccion": "2025-07-01T18:05:00",
@@ -92,7 +92,7 @@
     },
     {
         "Id": "TX008",
-        "Numero": "3217896549876543",
+        "NueroTarjeta": "3217896549876543",
         "Tipo": "Compra",
         "Monto": 275.00,
         "FechaTransaccion": "2025-03-22T09:45:00",
@@ -105,7 +105,7 @@
     },
     {
         "Id": "TX009",
-        "Numero": "3217896549876543",
+        "NueroTarjeta": "3217896549876543",
         "Tipo": "Compra",
         "Monto": 600.00,
         "FechaTransaccion": "2025-04-18T15:30:00",
@@ -118,7 +118,7 @@
     },
     {
         "Id": "TX010",
-        "Numero": "6549873216549870",
+        "NueroTarjeta": "6549873216549870",
         "Tipo": "Compra",
         "Monto": 75.25,
         "FechaTransaccion": "2025-08-20T12:30:00",
@@ -131,7 +131,7 @@
     },
     {
         "Id": "TX011",
-        "Numero": "6549873216549870",
+        "NueroTarjeta": "6549873216549870",
         "Tipo": "Compra",
         "Monto": 100.00,
         "FechaTransaccion": "2025-09-05T11:00:00",

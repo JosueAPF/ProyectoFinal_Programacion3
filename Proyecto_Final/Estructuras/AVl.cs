@@ -3,38 +3,44 @@ using Models;
 
 namespace Proyecto_Final.Estructuras
 {
-    public class AVl<T>  where T : AccesoId
+    public class AVl<T> where T : AccesoId
     {
         public NodoA<T> Raiz { get; set; }
 
         /*Otener Altura de Nodo*/
-        public int GetAltuar(NodoA<T> nodo) {
-            if (nodo != null) {
+        public int GetAltuar(NodoA<T> nodo)
+        {
+            if (nodo != null)
+            {
                 return nodo.Altura;
             }
             return 0;
         }
         /*Calcular el Factor de Equilibrio*/
-        public int FalctoEquilibrio(NodoA<T> nodo) {
-            if(nodo != null) {
+        public int FalctoEquilibrio(NodoA<T> nodo)
+        {
+            if (nodo != null)
+            {
                 return GetAltuar(nodo.Der) - GetAltuar(nodo.Izq);
             }
             return 0;
         }
 
         /*Acutalizador de Altura*/
-        public void ActualizarAltura(NodoA<T> nodo) { 
+        public void ActualizarAltura(NodoA<T> nodo)
+        {
             nodo.Altura = Math.Max(GetAltuar(nodo.Izq), GetAltuar(nodo.Der)) + 1; // 1 para evitar el cero:::  
         }
 
         /*****************************Rotaciones ********/
 
         /*(Izquierda-Izquierda), Rotacion Derecha*/
-        public NodoA<T> RotacionDerecha(NodoA<T> nodo) { 
+        public NodoA<T> RotacionDerecha(NodoA<T> nodo)
+        {
             NodoA<T> aux1 = nodo.Izq;
             NodoA<T> aux2 = aux1.Der;
 
-            aux1.Der = nodo;    
+            aux1.Der = nodo;
             nodo.Izq = aux2;
 
             ActualizarAltura(nodo);
@@ -44,12 +50,13 @@ namespace Proyecto_Final.Estructuras
         }
 
         /*(Derecha-Derecha), Rotacion Izquierda*/
-        public NodoA<T> RotacionIzquierda(NodoA<T> nodo) { 
+        public NodoA<T> RotacionIzquierda(NodoA<T> nodo)
+        {
             NodoA<T> aux1 = nodo.Der;
-            NodoA<T> aux2 = aux1.Izq;   
+            NodoA<T> aux2 = aux1.Izq;
 
             aux1.Izq = nodo;
-            nodo.Der = aux2;    
+            nodo.Der = aux2;
 
             ActualizarAltura(nodo);
             ActualizarAltura(aux1);
@@ -59,9 +66,11 @@ namespace Proyecto_Final.Estructuras
         }
 
         /*Metodos Recursivos*/
-        public NodoA<T> InsercionRec(NodoA<T> nodo, T dato) {
-            if (nodo == null) { 
-                return new NodoA<T>(dato);  
+        public NodoA<T> InsercionRec(NodoA<T> nodo, T dato)
+        {
+            if (nodo == null)
+            {
+                return new NodoA<T>(dato);
             }
 
             if (dato.Id.CompareTo(nodo.Dato.Id) < 0)
@@ -79,10 +88,10 @@ namespace Proyecto_Final.Estructuras
 
             //#2 Calculo el Factor de Equilibrio lo gurado en una variable
             int Fe = FalctoEquilibrio(nodo);
-            
+
             //*Rotaciones simples/
 
-            
+
             // Rotación simple Izq-Izq
             if (Fe < -1 && dato.Id.CompareTo(nodo.Izq.Dato.Id) < 0)
                 return RotacionDerecha(nodo);
@@ -110,43 +119,90 @@ namespace Proyecto_Final.Estructuras
             return nodo;
         }
         //eliminacion x Id
-        public NodoA<T> ElimRec(NodoA<T> nodo , T dato) {
-            if (nodo == null) {
+        public NodoA<T> ElimRec(NodoA<T> nodo, T dato)
+        {
+            if (nodo == null)
                 return null;
-            }
 
+            // 1) Busco el nodo según la clave (Id)
             if (dato.Id.CompareTo(nodo.Dato.Id) < 0)
             {
-                ElimRec(nodo.Izq, dato);
+                // reasigno el hijo izquierdo con la subraíz resultante
+                nodo.Izq = ElimRec(nodo.Izq, dato);
             }
             else if (dato.Id.CompareTo(nodo.Dato.Id) > 0)
             {
-                ElimRec(nodo.Der, dato);
+                // reasigno el hijo derecho con la subraíz resultante
+                nodo.Der = ElimRec(nodo.Der, dato);
             }
-            else {
-                //caso #1 y caso #2 un solo hijo
-                if (nodo.Izq == null) {
-                    return nodo.Der;
-                } else if (nodo.Der == null) {
-                    return nodo.Izq;
+            else
+            {
+                // 2) Si encuentro el nodo a eliminar:
+                //    - Caso 1 y 2: tiene uno o ningún hijo
+                if (nodo.Izq == null)
+                {
+                    return nodo.Der;  // devuelve el hijo derecho (o null si no tiene)
+                }
+                else if (nodo.Der == null)
+                {
+                    return nodo.Izq;  // devuelve el hijo izquierdo
                 }
 
-                //caso 2 hijos
-
-                //buscando el succesor mas ala izq
-                var aux = ObtenerMinimo(nodo.Der);
-                nodo.Der = ElimRec(nodo,aux.Dato);
+                //    - Caso 3: dos hijos → tomo el sucesor (mínimo en la rama derecha)
+                NodoA<T> aux = ObtenerMinimo(nodo.Der);
+                // Copio el dato del sucesor en el nodo actual
+                nodo.Dato = aux.Dato;
+                // Elimino recursivamente ese sucesor en la subrama derecha
+                nodo.Der = ElimRec(nodo.Der, aux.Dato);
             }
+
+            // 3) Actualizo la altura de este nodo “nodo”
             ActualizarAltura(nodo);
 
-            return nodo ;
+            // 4) Recalculo factor de equilibrio partiendo de tu método
+            int Fe = FalctoEquilibrio(nodo);
+
+            // (Recuerda que tu método FalctoEquilibrio devuelve altura(derecha) - altura(izquierda))
+
+            // 5) Si el subárbol quedó desbalanceado, aplico rotaciones:
+            //    - Fe < -1 → rama izquierda más alta de lo permitido
+            if (Fe < -1 && FalctoEquilibrio(nodo.Izq) <= 0)
+            {
+                // **Rotación simple Izq-Izq**
+                return RotacionDerecha(nodo);
+            }
+            if (Fe < -1 && FalctoEquilibrio(nodo.Izq) > 0)
+            {
+                // **Rotación doble Izq-Der**
+                nodo.Izq = RotacionIzquierda(nodo.Izq);
+                return RotacionDerecha(nodo);
+            }
+
+            //    - Fe > 2 → rama derecha más alta de lo permitido
+            if (Fe > 2 && FalctoEquilibrio(nodo.Der) >= 0)
+            {
+                // **Rotación simple Der-Der**
+                return RotacionIzquierda(nodo);
+            }
+            if (Fe > 2 && FalctoEquilibrio(nodo.Der) < 0)
+            {
+                // **Rotación doble Der-Izq**
+                nodo.Der = RotacionDerecha(nodo.Der);
+                return RotacionIzquierda(nodo);
+            }
+
+            // 6) Si ya no hace falta rotar, simplemente devuelvo este nodo
+            return nodo;
         }
-        private NodoA<T> ObtenerMinimo(NodoA<T> nodo) {
-            while (nodo.Izq !=null) {
+
+        private NodoA<T> ObtenerMinimo(NodoA<T> nodo)
+        {
+            while (nodo.Izq != null)
+            {
                 nodo = nodo.Izq;
             }
             return nodo;
-        
+
         }
 
         public NodoA<T> BuscarRec(NodoA<T> nodo, string dato)
@@ -178,13 +234,13 @@ namespace Proyecto_Final.Estructuras
         public void Eliminar(T dato)
         {
             Raiz = ElimRec(Raiz, dato);
-        }   
+        }
         public void Buscar(string dato)
         {
-              BuscarRec(Raiz, dato);
-        }   
+            BuscarRec(Raiz, dato);
+        }
 
-        
+
 
 
 

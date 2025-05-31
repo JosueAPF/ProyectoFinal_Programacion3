@@ -1,12 +1,568 @@
 {
   "Version": 1,
-  "Hash": "MXnn95H61DCsyHJxKDt5oZ8KCMNJ8Bmfg8aDuUQdIPY=",
+  "Hash": "v8M9XgEsH1pMvzSOTcPSgwoQlvWtHmD2uvS2P5ARPUo=",
   "Source": "Proyecto_Final",
   "BasePath": "_content/Proyecto_Final",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Proyecto_Final\\wwwroot",
+      "Source": "Proyecto_Final",
+      "ContentRoot": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\",
+      "BasePath": "_content/Proyecto_Final",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\vexla8jjps-ty9ofl5be2.gz",
+      "SourceId": "Proyecto_Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Proyecto_Final",
+      "RelativePath": "swagger-ui/custom#[.{fingerprint=ty9ofl5be2}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\custom.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "0fv65yh0hy",
+      "Integrity": "dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI=",
+      "CopyToOutputDirectory": "Always",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\custom.css"
+    },
+    {
+      "Identity": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\custom.css",
+      "SourceId": "Proyecto_Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\",
+      "BasePath": "_content/Proyecto_Final",
+      "RelativePath": "swagger-ui/custom#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ty9ofl5be2",
+      "Integrity": "i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18=",
+      "CopyToOutputDirectory": "Always",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger-ui\\custom.css"
+    },
+    {
+      "Identity": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo.png",
+      "SourceId": "Proyecto_Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\",
+      "BasePath": "_content/Proyecto_Final",
+      "RelativePath": "swagger-ui/img/logo#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7q5ebuefu8",
+      "Integrity": "gSiGO1zukuLiwspsjw+1nB7p9M8siI95JldCOzIv1bs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger-ui\\img\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo-marianoGalvez.png",
+      "SourceId": "Proyecto_Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\",
+      "BasePath": "_content/Proyecto_Final",
+      "RelativePath": "swagger-ui/img/logo-marianoGalvez#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xz9vyzv68g",
+      "Integrity": "o339PTo3h3bgdYcCabq1BGw9iVc5ZMHSL0L8Vxvql6Q=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger-ui\\img\\logo-marianoGalvez.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "swagger-ui/custom.css",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\vexla8jjps-ty9ofl5be2.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000973709834"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1026"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/custom.css",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\custom.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2564"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/custom.css.gz",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\vexla8jjps-ty9ofl5be2.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1026"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/custom.ty9ofl5be2.css",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\vexla8jjps-ty9ofl5be2.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000973709834"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1026"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ty9ofl5be2"
+        },
+        {
+          "Name": "label",
+          "Value": "swagger-ui/custom.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/custom.ty9ofl5be2.css",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\custom.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2564"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ty9ofl5be2"
+        },
+        {
+          "Name": "label",
+          "Value": "swagger-ui/custom.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i8TwFtkaU0mercSW4WgeoWd+pgDWNilHNK6WKJlKZ18="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/custom.ty9ofl5be2.css.gz",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\obj\\Debug\\net9.0\\compressed\\vexla8jjps-ty9ofl5be2.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1026"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:47:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ty9ofl5be2"
+        },
+        {
+          "Name": "label",
+          "Value": "swagger-ui/custom.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dB64xQ+lbVfKkE+6xOL7c5U5H050/CxFNwAzoYokPhI="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/img/logo.7q5ebuefu8.png",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64044"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gSiGO1zukuLiwspsjw+1nB7p9M8siI95JldCOzIv1bs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7q5ebuefu8"
+        },
+        {
+          "Name": "label",
+          "Value": "swagger-ui/img/logo.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gSiGO1zukuLiwspsjw+1nB7p9M8siI95JldCOzIv1bs="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/img/logo.png",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64044"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gSiGO1zukuLiwspsjw+1nB7p9M8siI95JldCOzIv1bs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gSiGO1zukuLiwspsjw+1nB7p9M8siI95JldCOzIv1bs="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/img/logo-marianoGalvez.png",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo-marianoGalvez.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330626"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"o339PTo3h3bgdYcCabq1BGw9iVc5ZMHSL0L8Vxvql6Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 15:11:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-o339PTo3h3bgdYcCabq1BGw9iVc5ZMHSL0L8Vxvql6Q="
+        }
+      ]
+    },
+    {
+      "Route": "swagger-ui/img/logo-marianoGalvez.xz9vyzv68g.png",
+      "AssetFile": "C:\\Users\\josue\\Desktop\\Proyecto_Final\\ProyectoFinal_Programacion3\\Proyecto_Final\\wwwroot\\swagger-ui\\img\\logo-marianoGalvez.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330626"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"o339PTo3h3bgdYcCabq1BGw9iVc5ZMHSL0L8Vxvql6Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 15:11:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xz9vyzv68g"
+        },
+        {
+          "Name": "label",
+          "Value": "swagger-ui/img/logo-marianoGalvez.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-o339PTo3h3bgdYcCabq1BGw9iVc5ZMHSL0L8Vxvql6Q="
+        }
+      ]
+    }
+  ]
 }

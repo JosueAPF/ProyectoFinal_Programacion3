@@ -40,27 +40,23 @@ namespace Proyecto_Final.Servicio
             }
             return buscarcliente.ToString();
         }
-        /* Modifica : Version sin DTO*/
-        public string ModificarCliente(string id, Clientes nuevoCliente)
-        {
-            var clienteModificado = ContextoEstructura.abblClientes.ModificarNodo(id, nuevoCliente);
-            return clienteModificado.ToString();
-        }
+       
 
 
         public Clientes ModificarNombre(string id, ClienteDTO_ModificarNombre cliNombre)
         {
-            var viejo = ContextoEstructura.abblClientes.Buscar(id);
-            if (viejo == null)
-            {
-                return null;
-            }
 
-            var nueva = new Clientes(id, cliNombre.Name, viejo.Dato.DPI);
-            var Modificacion = ContextoEstructura.abblClientes.ModificarNodo(id, nueva);
-            //a prueba
-            var ModificarTabla = ContextoEstructura.tablaClientes.Modificar(id, nueva);
-            return nueva;
+            var nodoViejo = ContextoEstructura.abblClientes.Buscar(id);
+            if (nodoViejo == null)
+                return null;
+
+            // Actualiza el Name sobre la instancia existente
+            nodoViejo.Dato.Name = cliNombre.Name;
+
+            // Como en la tabla hash guardas la misma instancia, con esto basta
+            ContextoEstructura.tablaClientes.Modificar(id, nodoViejo.Dato);
+
+            return nodoViejo.Dato;
 
         }
         public void agregarTarjeta(Tarjeta tarjeta)

@@ -5,14 +5,14 @@ using Proyecto_Final.Models;
 
 namespace Models
 {
-    public class Tarjeta:AccesoId, AccesoTarjeta_NumeroTarjeta
+    public class Tarjeta:AccesoId
     {
         public string  Id { get; set; }
         public string Numero { get; set; }
         public DateTime FechaExpiracion { get; set; }
         public int Cvv { get; set; }
         public int Pin { get; set; }
-        public decimal Balance { get; set; }
+        public decimal deuda { get; set; }
         public decimal LimiteCredito { get; set; }
         public bool IsBlocked { get; set; }
         public string IdCliente { get; set; }
@@ -31,7 +31,7 @@ namespace Models
             FechaExpiracion = fechaExpiracion;
             Cvv = cvv;
             Pin = pin;  
-            Balance = balance;
+            deuda = balance;
             LimiteCredito = limiteCredito;
             IsBlocked = estaBloqueada;
             IdCliente = idCliente;
@@ -71,7 +71,7 @@ namespace Models
 
         //corregido
         public decimal SaldoDisponible() { 
-            return this.LimiteCredito - this.Balance;
+            return this.LimiteCredito - this.deuda;
 
         }
 
@@ -94,7 +94,7 @@ namespace Models
                    $"\n\tExpira el: {FechaExpiracion}," +
                    $"\n\tCVV: {Cvv}," +
                    $"\n\tPin: {Pin}," +
-                   $"\n\tBalance: {Balance}," +
+                   $"\n\tBalance: {deuda}," +
                    $"\n\tLímite de Crédito: {LimiteCredito}," +
                    $"\n\tEstá Bloqueada: {IsBlocked}," +
                    $"\n\tID Cliente Asociado: {IdCliente}" +

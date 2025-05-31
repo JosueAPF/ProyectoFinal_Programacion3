@@ -65,7 +65,7 @@ namespace Proyecto_Final.Servicio
 
             foreach (var tarjeta in ContextoEstructuras.colaTarjetas.ObtenerTodo())
             {
-                if (tarjeta.Numero == trx.Numero)
+                if (tarjeta.Numero == trx.NueroTarjeta)
                 {
 
                     tarjetaEncontrada = tarjeta;
@@ -89,13 +89,13 @@ namespace Proyecto_Final.Servicio
                     return false;
                 }
 
-                if (tarjetaEncontrada.Balance == 0)
+                if (tarjetaEncontrada.deuda == 0)
                     return false; // Nada que pagar
 
                 // mejor
-                if (trx.Monto > 0 && trx.Monto <= tarjetaEncontrada.Balance)
+                if (trx.Monto > 0 && trx.Monto <= tarjetaEncontrada.deuda)
                 {
-                   tarjetaEncontrada.Balance -= trx.Monto;
+                   tarjetaEncontrada.deuda -= trx.Monto;
                    
                 }
 
@@ -115,14 +115,14 @@ namespace Proyecto_Final.Servicio
                     return true;
                 }
 
-                decimal NuevaDeuda = tarjetaEncontrada.Balance + trx.Monto;
+                decimal NuevaDeuda = tarjetaEncontrada.deuda + trx.Monto;
                 if (NuevaDeuda >= tarjetaEncontrada.LimiteCredito)
                 {
-                    tarjetaEncontrada.Balance = tarjetaEncontrada.LimiteCredito;
+                    tarjetaEncontrada.deuda = tarjetaEncontrada.LimiteCredito;
                     tarjetaEncontrada.IsBlocked = true;
                 }
                 else { 
-                    tarjetaEncontrada.Balance += trx.Monto;
+                    tarjetaEncontrada.deuda += trx.Monto;
                 
                 }
 
@@ -178,7 +178,7 @@ namespace Proyecto_Final.Servicio
         //Mostrar pila historial recientes
         public IEnumerable<Transaccion> ObtenerRecientes_Pila(int n)
         {
-            //obtenemos solo las n transacciones no mayores a 10 por peticion
+            //obtenemos solo las n transacciones no mayores a n por peticion
             return ContextoEstructuras.pilaTransacciones.ObtenerTodo().Take(n);
         }
 

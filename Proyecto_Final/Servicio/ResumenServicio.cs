@@ -46,7 +46,7 @@ namespace Proyecto_Final.Servicio
                 if (tarjeta.IdCliente == cliente.Id)
                 {
                     //almacenando la info para usarla despue
-                    decimal deuda = tarjeta.Balance;
+                    decimal deuda = tarjeta.deuda;
                     decimal limite = tarjeta.LimiteCredito;
                     decimal disponibl = limite - deuda;
                     bool bloqueada = tarjeta.IsBlocked;
@@ -74,7 +74,7 @@ namespace Proyecto_Final.Servicio
                             .AppendLine($"Establecimiento  :{trans.Establecimiento.Nombre}")
                             .AppendLine($"Cantidad :{trans.Monto}")
                             .AppendLine($"Fecha y Hora :{trans.FechaTransaccion}")
-                            .AppendLine($"Con Tarjeta :{trans.Numero}")
+                            .AppendLine($"Con Tarjeta :{trans.NueroTarjeta}")
                             .AppendLine("\n");
                         }
                     }
@@ -92,7 +92,7 @@ namespace Proyecto_Final.Servicio
                             .AppendLine($"Establecimiento  :{trans.Establecimiento.Nombre}")
                             .AppendLine($"Cantidad :{trans.Monto}")
                             .AppendLine($"Fecha y Hora :{trans.FechaTransaccion}")
-                            .AppendLine($"Con Tarjeta :{trans.Numero}")
+                            .AppendLine($"Con Tarjeta :{trans.NueroTarjeta}")
                             .AppendLine("\n");
                         }
                     }

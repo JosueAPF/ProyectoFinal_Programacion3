@@ -135,6 +135,15 @@ namespace Proyecto_Final.Controllers
             }
             return Ok(desbloqueando);
         }
+        [HttpPut("Renovacion/{numeroTarjeta}")]
+        public ActionResult RenovarTarjeta(string numeroTarjeta) {
+            var existencia = tarjetaServicio.BuscarTarjetaxNumero(numeroTarjeta);
+            var renovarT = tarjetaServicio.RenovarTarjeta(numeroTarjeta);
+            if (existencia == null) {
+                return BadRequest($"el numero de Tarjeta {numeroTarjeta} es incorrecto!");
+            }
+            return Ok(renovarT);
+        }
 
         [HttpPut("aumentoLimite/{numeroTarjeta}")]
         public ActionResult AumentoLimite(string numeroTarjeta, [FromBody] decimal nuevoLimite)

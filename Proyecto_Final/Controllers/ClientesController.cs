@@ -54,7 +54,7 @@ namespace Proyecto_Final.Controllers
         }
 
         [HttpPost("nuevoClientes")]
-        public ActionResult NuevoCliente([FromBody] ClienteDTO_Escritura cliDTO)
+        public ActionResult NuevoCliente([FromBody] ClienteDTO cliDTO)
         {
             var cli = new Clientes(cliDTO.Id, cliDTO.Name, cliDTO.DPI);
             clientServicio.AgregarClientes(cli);
@@ -62,7 +62,7 @@ namespace Proyecto_Final.Controllers
         }
 
         [HttpPost("nuevoClienteTarjeta")]
-        public ActionResult NuevoClienteTarjeta([FromBody] ClienteDTO_Lectura cliDTO)
+        public ActionResult NuevoClienteTarjeta([FromBody] ClienteDTO_Tarjeta cliDTO)
         {
 
             // Validación: Asegurarse de que solo hay una tarjeta

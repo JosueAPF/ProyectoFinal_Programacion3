@@ -13,7 +13,7 @@ namespace Models
 
         public string Id { get; set; }
         
-        public string Numero { get; set; }
+        public string NueroTarjeta { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public TipoTransaccion Tipo { get; set; }
@@ -28,7 +28,7 @@ namespace Models
         public Transaccion(string id, string number, TipoTransaccion tipo, decimal monto, DateTime fechaTransaccion, Establecimiento est )
         {
             Id = id;
-            Numero = number;
+            NueroTarjeta = number;
             Tipo = tipo;
             Monto = monto;
             FechaTransaccion = fechaTransaccion;
@@ -39,7 +39,7 @@ namespace Models
         public override string ToString()
         {
             return $"\n\tId: {Id}, " +
-                $"\n\tNumber: {Numero}, " +
+                $"\n\tNumber: {NueroTarjeta}, " +
                 $"\n\tTipo: {Tipo}, " +
                 $"\n\tMonto: {Monto}, " +
                 $"\n\tFecha: {FechaTransaccion}"+

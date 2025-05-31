@@ -117,7 +117,7 @@ namespace Proyecto_Final.Servicio
             {
                 return "Esta Tarjeta esta Bloqueada";
             }
-            return $"Limite de Credito :Q{tarjeta.LimiteCredito} - Deuda : Q{tarjeta.Balance}  Saldo Disponible = Q{tarjeta.SaldoDisponible()}";
+            return $"Limite de Credito :Q{tarjeta.LimiteCredito} - Deuda : Q{tarjeta.deuda}  Saldo Disponible = Q{tarjeta.SaldoDisponible()}";
         }
 
 
@@ -141,19 +141,19 @@ namespace Proyecto_Final.Servicio
                 return $"Este Limite {nuevoLimite}, no puede ser menor al limite anteriro {tarjeta.LimiteCredito}";
             }
 
-            if (tarjeta.IsBlocked == true && tarjeta.Balance == 0m)
+            if (tarjeta.IsBlocked == true && tarjeta.deuda == 0m)
             {
                 return $"La tarjeta se encuentra Bloqueada";
             }
-
+            /*
             if (nuevoLimite > LimitesPermitidos)
             {
                 return $"El nuevo limite no pude exceder los Limites Permitidos";
-            }
+            }*/
 
-            if (nuevoLimite < tarjeta.Balance)
+            if (nuevoLimite < tarjeta.deuda)
             {
-                return $"El nuevo Limite no puede ser menor a la deuda actual {tarjeta.Balance}";
+                return $"El nuevo Limite no puede ser menor a la deuda actual {tarjeta.deuda}";
             }
 
             //creacion del registro Cola<>
@@ -219,7 +219,7 @@ namespace Proyecto_Final.Servicio
             {
                 return 0m;
             }
-            return tarjeta.Balance;
+            return tarjeta.deuda;
         }
 
 
@@ -258,7 +258,7 @@ namespace Proyecto_Final.Servicio
             {
                 if (item.Tipo == TipoTransaccion.Pago)
                 {
-                    if (tarjeta.Numero.Equals(item.Numero))
+                    if (tarjeta.Numero.Equals(item.NueroTarjeta))
                     {
                         ContextoEstructuras.ListaPagos.Enlistar(item);
                     }
@@ -270,7 +270,7 @@ namespace Proyecto_Final.Servicio
 
                 if (item.Tipo == TipoTransaccion.Compra)
                 {
-                    if (tarjeta.Numero.Equals(item.Numero))
+                    if (tarjeta.Numero.Equals(item.NueroTarjeta))
                     {
                         ContextoEstructuras.ListaCompras.Enlistar(item);
                     }
@@ -304,5 +304,20 @@ namespace Proyecto_Final.Servicio
 
             return $"se elimino :{buscarT}";
         }
+
+        /*7.	API de Renovación de Tarjeta de Crédito*/
+        public string RenovarTarjeta(string numeroTarjeta) {
+            var tarjetas = ContextoEstructuras.colaTarjetas.ObtenerTodo();
+            foreach (var tar in tarjetas) {
+                if (tar.Numero == numeroTarjeta) {
+                    var fechaActual = tar.FechaExpiracion;
+                    tar.FechaExpiracion = tar.FechaExpiracion.AddYears(2).AddMonths(6).AddDays(6);//quedo
+                    return $"Fecha Anterior : {fechaActual}, nueva Fecha :{tar.FechaExpiracion}";
+                }
+            }
+            return "fecha de Expiracion sigue igual";
+
+        }
+
     }
 }

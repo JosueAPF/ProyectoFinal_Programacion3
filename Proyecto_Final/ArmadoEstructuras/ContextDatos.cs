@@ -9,8 +9,7 @@ namespace Proyecto_Final.ArmadoEstructuras
 {
     public class ContextDatos
     {
-        //pruebas
-        public Cola<Clientes> colaClientes { get; set; }
+        //cola de Tarjetas
         public Cola<Tarjeta> colaTarjetas { get; set; }
 
         //AVl de Tarjetas Eliminadas
@@ -45,8 +44,11 @@ namespace Proyecto_Final.ArmadoEstructuras
         {
 
 
-            colaClientes = new Cola<Clientes>();
+            //colaClientes = new Cola<Clientes>();
+            //tarjetas CRUD
             colaTarjetas = new Cola<Tarjeta>();
+
+            //clientes CRUD
             abbTransacciones = new ABB<Transaccion>();
             pilaTransacciones = new Pila<Transaccion>();
 
@@ -71,7 +73,7 @@ namespace Proyecto_Final.ArmadoEstructuras
             foreach (var t in tarjetasDes.Lectura("Tarjetas.json"))
                 colaTarjetas.Encolar(t);
 
-            /******************************Datos iniciales y transacciones que si piede el enunciado*****************************/
+   
 
             /*Arboles*/
 
@@ -79,17 +81,10 @@ namespace Proyecto_Final.ArmadoEstructuras
             foreach (var item in clientesDes.Lectura("Clientes.json"))
             {
                 abblClientes.Insertar(item);
+                tablaClientes.Insertar(item);
 
             }
-            //AVL-clientes Loggin-Logout
-            /*foreach (var item in clientesDes.Lectura("Clientes.json"))
-            {
-                avlClientesLogin.Insertar(item);
-
-            }*/
-
-
-            /* ABB Y Cola *///incolucrado Tambien pila<transacciones> pero en el servicio
+            
             //Transacciones:Datos iniciales
             foreach (var t in transaccionesDes.Lectura("Transacciones.json"))
             {
@@ -101,11 +96,7 @@ namespace Proyecto_Final.ArmadoEstructuras
 
             /*Tabla Hash-Resumen para Clinetes tarjetas transacciones*/
 
-            foreach (var item in clientesDes.Lectura("Clientes.json"))
-            {
-                tablaClientes.Insertar(item);
-
-            }
+           
             //complemento llenado de clinet y tarjeta para Clientes
             foreach (var t in tarjetasDes.Lectura("Tarjetas.json")) {
                 var buscandoCli = tablaClientes.BuscarTabla(t.IdCliente);

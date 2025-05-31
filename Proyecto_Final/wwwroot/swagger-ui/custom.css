@@ -1,0 +1,79 @@
+﻿/* 1) Ocultar el logo por defecto de Swagger (la “S” que aparece en la esquina) */
+.swagger-ui .topbar .topbar-wrapper img {
+    display: none !important;
+}
+
+/* 2) Insertar tu logo personalizado en el mismo contenedor */
+.swagger-ui .topbar .topbar-wrapper::before {
+    content: "";
+    display: inline-block;
+    /* Ajusta la ruta según dónde dejaste tu imagen */
+    background-image: url('/swagger-ui/img/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* Ajusta ancho/alto al tamaño de tu logo */
+    width: 180px;
+    height: 60px;
+    /* Para centrarlo verticalmente dentro del header */
+    vertical-align: middle;
+    /*margin-right: 12px;*/
+}
+
+/* 3) Si además quieres cambiar el texto que aparece al lado (título),
+   puedes modificarlo con CSS o bien dejar el default. Ejemplo: */
+.swagger-ui .topbar .topbar-wrapper .link span:first-child {
+    /* Cambiar color o tamaño de letra del texto “OpenAPI” o título que hayas puesto */
+    font-size: 1.2rem;
+    color: #ffffff; /* por ejemplo, si quieres texto blanco */
+}
+
+
+/* Header azul */
+.swagger-ui .topbar {
+    background-color: #007bff !important; /* Azul intenso */
+    border-bottom: 1px solid #0056b3; /* Borde inferior ligeramente más oscuro */
+}
+
+    /* Si quieres cambiar el hover del enlace/título en el header */
+    .swagger-ui .topbar .topbar-wrapper .link:focus,
+    .swagger-ui .topbar .topbar-wrapper .link:hover {
+        text-decoration: none;
+    }
+
+    /* Ajustar el color del texto del título dentro del header */
+    .swagger-ui .topbar .topbar-wrapper .link span:first-child {
+        color: #ffffff !important; /* Texto blanco */
+        font-weight: 600; /* Un poco más negrita */
+    }
+
+    /* Si el SVG de menú hamburguesa (en pantallas pequeñas) aparece, cambiar su color a blanco */
+    .swagger-ui .topbar .topbar-wrapper .link svg {
+        fill: #ffffff !important;
+    }
+
+
+
+
+
+
+/* Botón “Try it out” */
+.swagger-ui .btn {
+    background-color: #0069d9 !important; /* Azul más oscuro */
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+}
+
+    .swagger-ui .btn:hover {
+        background-color: #4cff00 !important;
+        border-color: #4cff00 !important;
+    }
+
+/* Etiquetas (tags) que agrupan cada operación */
+.swagger-ui .opblock-tag {
+    background-color: #007bff !important; /* Azul claro */
+    color: #ffffff !important;
+    border-radius: 4px;
+    padding: 4px 8px;
+    /*
+    font-size: 0.9rem;*
+}

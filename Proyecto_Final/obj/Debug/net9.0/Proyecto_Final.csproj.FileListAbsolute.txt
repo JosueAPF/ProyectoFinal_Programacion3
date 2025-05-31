@@ -80,3 +80,7 @@ C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\obj\Debug\net9.0\Proyecto_Final.pdb
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\obj\Debug\net9.0\Proyecto_Final.genruntimeconfig.cache
 C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\obj\Debug\net9.0\ref\Proyecto_Final.dll
+C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\Proyecto_Final.staticwebassets.runtime.json
+C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\wwwroot\swagger-ui\custom.css.gz
+C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\bin\Debug\net9.0\wwwroot\swagger-ui\custom.css
+C:\Users\josue\Desktop\Proyecto_Final\ProyectoFinal_Programacion3\Proyecto_Final\obj\Debug\net9.0\compressed\vexla8jjps-ty9ofl5be2.gz

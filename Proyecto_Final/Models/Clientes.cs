@@ -8,7 +8,7 @@ using Proyecto_Final.Models;
 
 namespace Models
 {
-    public class Clientes: AccesoId,Acceoso_AddTarjeta
+    public class Clientes: AccesoId
     {
 
         public string Id { get; set; }
@@ -44,12 +44,7 @@ namespace Models
             return sb.ToString();   
         }
 
-        /*
-        public String VerTarjetas()
-        {
-           return tarjetas.Mostrar();   
-
-        }*/
+        
 
         public void AgregarTarjeta(Tarjeta tarjeta)
         {
