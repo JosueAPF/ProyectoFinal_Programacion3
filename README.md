@@ -16,12 +16,17 @@ Proyecto Final Programacion 3
 luego de clonar el repositorio:
   
 3. **Para Ejecutar el Proyecto usar**
+
+   
      ![Descripción de la imagen](https://github.com/JosueAPF/Ejercicio_Java/blob/master/II_Express.png)
 
-4. **luego mostrara su localhost + index.html
+
+   
+
+5. **luego mostrara su localhost + index.html
     la cual seria la version customizada
 
-5. **version original de swagger**
+6. **version original de swagger**
      ejecute el proyecto
      ir a la sig ruta locarhost+/swagger/index.html 
 
