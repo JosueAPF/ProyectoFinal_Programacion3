@@ -16,12 +16,14 @@ Proyecto Final Programacion 3
 luego de clonar el repositorio:
   
 3. **Para Ejecutar el Proyecto usar**
-
+     II Express
    
      ![Descripción de la imagen](https://github.com/JosueAPF/Ejercicio_Java/blob/master/II_Express.png)
 
 
-   
+
+3.1**ninguna configuracion para HTTP y HTTPS (server Kestel)
+
 
 5. **luego mostrara su localhost + index.html
     la cual seria la version customizada
